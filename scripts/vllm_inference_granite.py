@@ -12,7 +12,7 @@ from transformers import AutoTokenizer
 from transformers.utils import logging
 from vllm import LLM, SamplingParams
 
-from .granite_prompts import create_prompt, Example, AutocompleteOptions
+from granite_prompts import create_prompt, Example, AutocompleteOptions
 
 logging.set_verbosity_info()
 logger = logging.get_logger(__name__)
@@ -32,6 +32,7 @@ def cceval_generate(
     prompts = []
     for d in data:
         prompt = create_prompt(d, tokenizer, options)
+        prompts.append(prompt)
 
     outputs = llm.generate(prompts, sampling_params, use_tqdm=True)
 
@@ -76,6 +77,10 @@ def main():
     parser.add_argument(
         '--tp_size', type=int, default=1,
         help='tensor parallel size'
+    )
+    parser.add_argument(
+        '--model_max_tokens', type=int, default=16384,
+        help='maximum number of tokens of the model'
     )
     parser.add_argument(
         '--generation_max_tokens', type=int, default=50,
