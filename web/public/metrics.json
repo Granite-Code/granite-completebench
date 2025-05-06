@@ -1,0 +1,3458 @@
+[
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 10.24,
+    "editSimilarity": 33.81,
+    "stop": 42.39
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 14.88,
+    "editSimilarity": 49.55,
+    "stop": 71.31
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 14.88,
+    "editSimilarity": 49.58,
+    "stop": 71.48
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 19.58,
+    "editSimilarity": 67.56,
+    "stop": 98.81
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 10.75,
+    "editSimilarity": 31.29,
+    "stop": 32.77
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 19.64,
+    "editSimilarity": 51.53,
+    "stop": 68.65
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 19.75,
+    "editSimilarity": 51.57,
+    "stop": 68.93
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.84,
+    "editSimilarity": 69.34,
+    "stop": 98.36
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 13.58,
+    "editSimilarity": 36.71,
+    "stop": 44.31
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 19.69,
+    "editSimilarity": 52.96,
+    "stop": 72.67
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 19.81,
+    "editSimilarity": 52.98,
+    "stop": 72.84
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.67,
+    "editSimilarity": 69.73,
+    "stop": 98.08
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 14.09,
+    "editSimilarity": 36.92,
+    "stop": 46.52
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 19.98,
+    "editSimilarity": 52.76,
+    "stop": 73.12
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 20.09,
+    "editSimilarity": 52.77,
+    "stop": 73.29
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.9,
+    "editSimilarity": 69.46,
+    "stop": 98.3
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 8.65,
+    "editSimilarity": 36.63,
+    "stop": 52.88
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.03,
+    "editSimilarity": 45.4,
+    "stop": 75.41
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.45,
+    "editSimilarity": 47.55,
+    "stop": 77.93
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 14.31,
+    "editSimilarity": 61.08,
+    "stop": 98.69
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 10.52,
+    "editSimilarity": 35.77,
+    "stop": 48.34
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 15.1,
+    "editSimilarity": 46.55,
+    "stop": 75.08
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 16.18,
+    "editSimilarity": 48.72,
+    "stop": 78.4
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 20.01,
+    "editSimilarity": 61.7,
+    "stop": 98.88
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 10.75,
+    "editSimilarity": 38.98,
+    "stop": 57.41
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 15.19,
+    "editSimilarity": 48.66,
+    "stop": 79.24
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 16.41,
+    "editSimilarity": 50.38,
+    "stop": 81.58
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 19.92,
+    "editSimilarity": 63.25,
+    "stop": 98.46
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 11.41,
+    "editSimilarity": 38.8,
+    "stop": 62.83
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 15.47,
+    "editSimilarity": 47.92,
+    "stop": 83.22
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 16.55,
+    "editSimilarity": 49.48,
+    "stop": 85.23
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 20.2,
+    "editSimilarity": 61.96,
+    "stop": 98.92
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 9.87,
+    "editSimilarity": 35.72,
+    "stop": 52.05
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 14.11,
+    "editSimilarity": 46.82,
+    "stop": 74.9
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 14.93,
+    "editSimilarity": 49.85,
+    "stop": 79.92
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 18.09,
+    "editSimilarity": 61.31,
+    "stop": 94.07
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 11.14,
+    "editSimilarity": 35.09,
+    "stop": 43.49
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 17.9,
+    "editSimilarity": 48.95,
+    "stop": 70.96
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 19.74,
+    "editSimilarity": 52.97,
+    "stop": 78.05
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.09,
+    "editSimilarity": 65.74,
+    "stop": 93.88
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 11.86,
+    "editSimilarity": 37.34,
+    "stop": 53.77
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 18.01,
+    "editSimilarity": 50.62,
+    "stop": 76.66
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 19.21,
+    "editSimilarity": 53.78,
+    "stop": 81.39
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 23.83,
+    "editSimilarity": 65.9,
+    "stop": 96.02
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 12.01,
+    "editSimilarity": 36.94,
+    "stop": 55.61
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 18.35,
+    "editSimilarity": 50.59,
+    "stop": 78.91
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 19.51,
+    "editSimilarity": 53.6,
+    "stop": 83.41
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.02,
+    "editSimilarity": 65.76,
+    "stop": 98.31
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 5.48,
+    "editSimilarity": 33.56,
+    "stop": 41.3
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.1,
+    "editSimilarity": 42.41,
+    "stop": 64.54
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 8.49,
+    "editSimilarity": 43.56,
+    "stop": 66.78
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 9.56,
+    "editSimilarity": 52.0,
+    "stop": 97.79
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 6.56,
+    "editSimilarity": 32.15,
+    "stop": 36.77
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 10.52,
+    "editSimilarity": 42.95,
+    "stop": 63.56
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.32,
+    "editSimilarity": 44.38,
+    "stop": 66.33
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 12.4,
+    "editSimilarity": 52.21,
+    "stop": 97.35
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 7.33,
+    "editSimilarity": 35.58,
+    "stop": 47.14
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 10.76,
+    "editSimilarity": 44.69,
+    "stop": 68.83
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.38,
+    "editSimilarity": 45.63,
+    "stop": 70.56
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 12.31,
+    "editSimilarity": 53.33,
+    "stop": 98.03
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 7.27,
+    "editSimilarity": 34.36,
+    "stop": 53.22
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 10.91,
+    "editSimilarity": 43.44,
+    "stop": 74.31
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.56,
+    "editSimilarity": 44.48,
+    "stop": 76.19
+  },
+  {
+    "model": "granite-3.3-8b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 12.43,
+    "editSimilarity": 51.65,
+    "stop": 98.3
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 0.06,
+    "editSimilarity": 17.6,
+    "stop": 14.09
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.83,
+    "editSimilarity": 46.79,
+    "stop": 67.52
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 8.83,
+    "editSimilarity": 46.77,
+    "stop": 67.69
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 12.17,
+    "editSimilarity": 64.61,
+    "stop": 98.75
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 0.11,
+    "editSimilarity": 17.31,
+    "stop": 0.45
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 12.73,
+    "editSimilarity": 44.4,
+    "stop": 58.8
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 12.9,
+    "editSimilarity": 44.46,
+    "stop": 59.14
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 21.62,
+    "editSimilarity": 68.48,
+    "stop": 98.3
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 0.17,
+    "editSimilarity": 19.79,
+    "stop": 33.28
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.09,
+    "editSimilarity": 42.39,
+    "stop": 72.1
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 8.09,
+    "editSimilarity": 42.41,
+    "stop": 72.21
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 11.09,
+    "editSimilarity": 61.1,
+    "stop": 98.7
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 0.74,
+    "editSimilarity": 19.27,
+    "stop": 21.39
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 12.56,
+    "editSimilarity": 48.66,
+    "stop": 72.95
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 12.68,
+    "editSimilarity": 48.68,
+    "stop": 73.12
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 15.79,
+    "editSimilarity": 64.31,
+    "stop": 98.53
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 0.05,
+    "editSimilarity": 19.82,
+    "stop": 16.88
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 6.59,
+    "editSimilarity": 39.83,
+    "stop": 65.17
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 7.99,
+    "editSimilarity": 43.21,
+    "stop": 72.04
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 11.59,
+    "editSimilarity": 59.88,
+    "stop": 98.13
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 0.23,
+    "editSimilarity": 20.78,
+    "stop": 2.06
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.7,
+    "editSimilarity": 39.7,
+    "stop": 53.34
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.55,
+    "editSimilarity": 43.69,
+    "stop": 64.98
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 18.09,
+    "editSimilarity": 61.44,
+    "stop": 97.85
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 0.51,
+    "editSimilarity": 27.46,
+    "stop": 50.07
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 7.29,
+    "editSimilarity": 43.55,
+    "stop": 82.19
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 9.16,
+    "editSimilarity": 45.06,
+    "stop": 83.54
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 11.5,
+    "editSimilarity": 58.55,
+    "stop": 98.69
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 0.37,
+    "editSimilarity": 24.19,
+    "stop": 31.46
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.56,
+    "editSimilarity": 44.07,
+    "stop": 76.67
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.57,
+    "editSimilarity": 46.22,
+    "stop": 80.22
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 13.51,
+    "editSimilarity": 60.24,
+    "stop": 98.27
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 0.79,
+    "editSimilarity": 18.07,
+    "stop": 9.49
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 6.34,
+    "editSimilarity": 40.48,
+    "stop": 60.79
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 7.2,
+    "editSimilarity": 44.68,
+    "stop": 71.37
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 9.12,
+    "editSimilarity": 49.5,
+    "stop": 74.03
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 1.43,
+    "editSimilarity": 21.67,
+    "stop": 5.18
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.41,
+    "editSimilarity": 41.71,
+    "stop": 50.24
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.13,
+    "editSimilarity": 47.5,
+    "stop": 65.37
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 14.41,
+    "editSimilarity": 52.82,
+    "stop": 69.98
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 0.45,
+    "editSimilarity": 19.37,
+    "stop": 22.48
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 3.6,
+    "editSimilarity": 38.1,
+    "stop": 59.92
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 4.2,
+    "editSimilarity": 42.52,
+    "stop": 71.78
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 6.27,
+    "editSimilarity": 44.74,
+    "stop": 70.32
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 0.56,
+    "editSimilarity": 19.47,
+    "stop": 21.16
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 3.98,
+    "editSimilarity": 39.49,
+    "stop": 62.48
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 4.5,
+    "editSimilarity": 43.71,
+    "stop": 73.21
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 6.68,
+    "editSimilarity": 45.34,
+    "stop": 70.36
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 0.21,
+    "editSimilarity": 19.25,
+    "stop": 3.13
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 5.75,
+    "editSimilarity": 37.5,
+    "stop": 53.52
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 6.47,
+    "editSimilarity": 39.75,
+    "stop": 60.13
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 7.72,
+    "editSimilarity": 49.73,
+    "stop": 98.48
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 0.33,
+    "editSimilarity": 19.54,
+    "stop": 1.1
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 6.7,
+    "editSimilarity": 36.25,
+    "stop": 44.99
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 8.08,
+    "editSimilarity": 38.61,
+    "stop": 52.18
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 10.55,
+    "editSimilarity": 50.73,
+    "stop": 98.75
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 0.6,
+    "editSimilarity": 22.64,
+    "stop": 20.92
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 5.63,
+    "editSimilarity": 39.0,
+    "stop": 63.8
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 6.35,
+    "editSimilarity": 40.26,
+    "stop": 66.98
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 7.27,
+    "editSimilarity": 47.74,
+    "stop": 98.66
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 0.63,
+    "editSimilarity": 20.86,
+    "stop": 7.45
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 7.36,
+    "editSimilarity": 41.19,
+    "stop": 62.22
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 8.08,
+    "editSimilarity": 43.05,
+    "stop": 67.79
+  },
+  {
+    "model": "granite-3.3-8b-instruct",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 8.94,
+    "editSimilarity": 50.23,
+    "stop": 98.69
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 3.51,
+    "editSimilarity": 25.0,
+    "stop": 26.77
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 10.02,
+    "editSimilarity": 43.13,
+    "stop": 60.05
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.02,
+    "editSimilarity": 43.13,
+    "stop": 60.05
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 15.62,
+    "editSimilarity": 65.67,
+    "stop": 98.53
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 3.23,
+    "editSimilarity": 23.28,
+    "stop": 12.68
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.26,
+    "editSimilarity": 43.08,
+    "stop": 53.03
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.49,
+    "editSimilarity": 43.13,
+    "stop": 53.42
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.03,
+    "editSimilarity": 65.69,
+    "stop": 98.3
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 2.77,
+    "editSimilarity": 22.26,
+    "stop": 21.84
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.77,
+    "editSimilarity": 42.76,
+    "stop": 57.5
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.94,
+    "editSimilarity": 42.75,
+    "stop": 57.61
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.83,
+    "editSimilarity": 66.85,
+    "stop": 98.13
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 2.38,
+    "editSimilarity": 21.55,
+    "stop": 22.18
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.26,
+    "editSimilarity": 42.55,
+    "stop": 59.37
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.38,
+    "editSimilarity": 42.54,
+    "stop": 59.48
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.88,
+    "editSimilarity": 66.77,
+    "stop": 98.42
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 2.57,
+    "editSimilarity": 27.51,
+    "stop": 37.21
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 6.83,
+    "editSimilarity": 41.12,
+    "stop": 66.57
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 7.34,
+    "editSimilarity": 44.1,
+    "stop": 71.9
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 10.0,
+    "editSimilarity": 59.68,
+    "stop": 98.5
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 2.85,
+    "editSimilarity": 24.89,
+    "stop": 27.21
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 9.68,
+    "editSimilarity": 40.85,
+    "stop": 63.3
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 11.03,
+    "editSimilarity": 44.01,
+    "stop": 70.27
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 14.82,
+    "editSimilarity": 59.1,
+    "stop": 98.04
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 2.01,
+    "editSimilarity": 25.17,
+    "stop": 33.99
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 9.12,
+    "editSimilarity": 41.34,
+    "stop": 67.65
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.61,
+    "editSimilarity": 44.53,
+    "stop": 73.4
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 14.21,
+    "editSimilarity": 60.41,
+    "stop": 97.9
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 1.4,
+    "editSimilarity": 23.7,
+    "stop": 33.52
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 8.79,
+    "editSimilarity": 40.25,
+    "stop": 67.98
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.38,
+    "editSimilarity": 43.49,
+    "stop": 73.59
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 14.17,
+    "editSimilarity": 59.5,
+    "stop": 97.94
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 5.44,
+    "editSimilarity": 31.11,
+    "stop": 42.06
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 9.79,
+    "editSimilarity": 43.3,
+    "stop": 68.11
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 10.58,
+    "editSimilarity": 46.34,
+    "stop": 73.55
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 13.51,
+    "editSimilarity": 59.33,
+    "stop": 93.62
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 6.87,
+    "editSimilarity": 31.23,
+    "stop": 36.47
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 12.46,
+    "editSimilarity": 45.22,
+    "stop": 65.03
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 13.51,
+    "editSimilarity": 48.51,
+    "stop": 72.38
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.79,
+    "editSimilarity": 62.36,
+    "stop": 93.43
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 5.74,
+    "editSimilarity": 30.15,
+    "stop": 40.9
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.82,
+    "editSimilarity": 44.8,
+    "stop": 69.49
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 12.68,
+    "editSimilarity": 47.8,
+    "stop": 74.52
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.6,
+    "editSimilarity": 62.91,
+    "stop": 95.35
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 5.48,
+    "editSimilarity": 29.23,
+    "stop": 38.87
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 11.56,
+    "editSimilarity": 44.22,
+    "stop": 68.37
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 12.53,
+    "editSimilarity": 47.35,
+    "stop": 73.58
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.56,
+    "editSimilarity": 62.68,
+    "stop": 95.76
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 2.0,
+    "editSimilarity": 25.9,
+    "stop": 28.75
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 4.47,
+    "editSimilarity": 35.4,
+    "stop": 54.2
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 5.07,
+    "editSimilarity": 37.32,
+    "stop": 58.49
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 5.9,
+    "editSimilarity": 47.91,
+    "stop": 97.56
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 2.38,
+    "editSimilarity": 24.08,
+    "stop": 23.87
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 6.23,
+    "editSimilarity": 34.9,
+    "stop": 52.56
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 7.03,
+    "editSimilarity": 36.8,
+    "stop": 57.21
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 8.28,
+    "editSimilarity": 47.55,
+    "stop": 97.2
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 1.37,
+    "editSimilarity": 24.12,
+    "stop": 27.21
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 5.27,
+    "editSimilarity": 35.66,
+    "stop": 55.9
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 5.9,
+    "editSimilarity": 37.38,
+    "stop": 59.83
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 7.51,
+    "editSimilarity": 48.39,
+    "stop": 97.47
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 1.22,
+    "editSimilarity": 23.15,
+    "stop": 27.74
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 5.27,
+    "editSimilarity": 34.55,
+    "stop": 56.5
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 6.02,
+    "editSimilarity": 36.34,
+    "stop": 60.76
+  },
+  {
+    "model": "granite-3.3-2b-base",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 7.63,
+    "editSimilarity": 47.64,
+    "stop": 97.32
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 37.52,
+    "editSimilarity": 72.68,
+    "stop": 85.96
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 38.26,
+    "editSimilarity": 75.26,
+    "stop": 91.17
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 38.26,
+    "editSimilarity": 75.23,
+    "stop": 91.28
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 40.86,
+    "editSimilarity": 82.11,
+    "stop": 98.47
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 46.58,
+    "editSimilarity": 75.13,
+    "stop": 85.68
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 47.54,
+    "editSimilarity": 78.27,
+    "stop": 91.74
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 47.54,
+    "editSimilarity": 78.24,
+    "stop": 91.91
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 50.42,
+    "editSimilarity": 84.57,
+    "stop": 98.08
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 45.22,
+    "editSimilarity": 74.41,
+    "stop": 85.06
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 45.84,
+    "editSimilarity": 76.86,
+    "stop": 89.93
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 45.84,
+    "editSimilarity": 76.83,
+    "stop": 90.1
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 49.69,
+    "editSimilarity": 84.26,
+    "stop": 97.91
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 44.88,
+    "editSimilarity": 73.89,
+    "stop": 84.61
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 45.56,
+    "editSimilarity": 76.53,
+    "stop": 89.64
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 45.56,
+    "editSimilarity": 76.49,
+    "stop": 89.76
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 49.63,
+    "editSimilarity": 84.37,
+    "stop": 97.91
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 29.78,
+    "editSimilarity": 70.23,
+    "stop": 90.88
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 28.85,
+    "editSimilarity": 69.84,
+    "stop": 94.06
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 29.13,
+    "editSimilarity": 70.86,
+    "stop": 95.42
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 33.24,
+    "editSimilarity": 78.13,
+    "stop": 99.72
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 39.74,
+    "editSimilarity": 75.03,
+    "stop": 91.91
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 38.29,
+    "editSimilarity": 73.77,
+    "stop": 94.48
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 38.8,
+    "editSimilarity": 74.6,
+    "stop": 95.37
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 43.15,
+    "editSimilarity": 81.47,
+    "stop": 99.67
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 38.43,
+    "editSimilarity": 74.06,
+    "stop": 92.38
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 37.26,
+    "editSimilarity": 73.15,
+    "stop": 95.18
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 37.63,
+    "editSimilarity": 73.88,
+    "stop": 95.89
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 42.17,
+    "editSimilarity": 80.84,
+    "stop": 99.58
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 38.24,
+    "editSimilarity": 73.93,
+    "stop": 92.61
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 36.98,
+    "editSimilarity": 73.03,
+    "stop": 95.28
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 37.4,
+    "editSimilarity": 73.84,
+    "stop": 96.07
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 42.31,
+    "editSimilarity": 80.88,
+    "stop": 99.63
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 25.93,
+    "editSimilarity": 61.83,
+    "stop": 87.47
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 26.57,
+    "editSimilarity": 64.22,
+    "stop": 92.27
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 27.13,
+    "editSimilarity": 65.88,
+    "stop": 94.0
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 30.09,
+    "editSimilarity": 72.73,
+    "stop": 98.42
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 33.55,
+    "editSimilarity": 68.08,
+    "stop": 88.52
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 34.41,
+    "editSimilarity": 70.12,
+    "stop": 92.95
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 34.78,
+    "editSimilarity": 71.44,
+    "stop": 94.33
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 38.5,
+    "editSimilarity": 77.71,
+    "stop": 98.5
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 31.63,
+    "editSimilarity": 67.07,
+    "stop": 89.23
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 32.83,
+    "editSimilarity": 69.5,
+    "stop": 93.85
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.32,
+    "editSimilarity": 70.83,
+    "stop": 95.16
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 37.56,
+    "editSimilarity": 77.34,
+    "stop": 98.87
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 32.23,
+    "editSimilarity": 66.94,
+    "stop": 89.53
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 33.17,
+    "editSimilarity": 69.26,
+    "stop": 94.37
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.77,
+    "editSimilarity": 70.76,
+    "stop": 95.72
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 38.09,
+    "editSimilarity": 77.42,
+    "stop": 98.91
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 24.58,
+    "editSimilarity": 66.38,
+    "stop": 88.83
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 24.43,
+    "editSimilarity": 66.77,
+    "stop": 91.9
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 24.58,
+    "editSimilarity": 67.6,
+    "stop": 93.15
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 22.38,
+    "editSimilarity": 68.55,
+    "stop": 99.28
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 32.84,
+    "editSimilarity": 72.22,
+    "stop": 90.46
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 32.69,
+    "editSimilarity": 72.46,
+    "stop": 92.94
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.1,
+    "editSimilarity": 73.15,
+    "stop": 93.89
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 28.93,
+    "editSimilarity": 72.34,
+    "stop": 99.49
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 32.12,
+    "editSimilarity": 70.76,
+    "stop": 90.14
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 32.09,
+    "editSimilarity": 71.26,
+    "stop": 92.97
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 32.45,
+    "editSimilarity": 71.97,
+    "stop": 93.74
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 28.64,
+    "editSimilarity": 71.53,
+    "stop": 99.52
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 31.62,
+    "editSimilarity": 70.5,
+    "stop": 89.99
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 31.67,
+    "editSimilarity": 71.07,
+    "stop": 92.85
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 32.06,
+    "editSimilarity": 71.74,
+    "stop": 93.65
+  },
+  {
+    "model": "Qwen2.5-Coder-14B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 28.61,
+    "editSimilarity": 71.6,
+    "stop": 99.49
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 31.98,
+    "editSimilarity": 66.3,
+    "stop": 79.51
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 33.56,
+    "editSimilarity": 71.3,
+    "stop": 88.23
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.56,
+    "editSimilarity": 71.27,
+    "stop": 88.4
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 37.35,
+    "editSimilarity": 80.16,
+    "stop": 98.59
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 38.14,
+    "editSimilarity": 67.34,
+    "stop": 77.7
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 40.92,
+    "editSimilarity": 73.43,
+    "stop": 87.55
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 40.92,
+    "editSimilarity": 73.37,
+    "stop": 87.66
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 46.07,
+    "editSimilarity": 82.79,
+    "stop": 98.13
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 39.11,
+    "editSimilarity": 67.72,
+    "stop": 78.1
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 41.03,
+    "editSimilarity": 73.1,
+    "stop": 87.21
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 41.03,
+    "editSimilarity": 73.08,
+    "stop": 87.38
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 45.9,
+    "editSimilarity": 82.53,
+    "stop": 98.3
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 39.78,
+    "editSimilarity": 68.3,
+    "stop": 77.87
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 41.77,
+    "editSimilarity": 73.59,
+    "stop": 86.81
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 41.77,
+    "editSimilarity": 73.57,
+    "stop": 86.98
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 46.18,
+    "editSimilarity": 82.61,
+    "stop": 97.79
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 25.71,
+    "editSimilarity": 65.29,
+    "stop": 87.1
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 24.92,
+    "editSimilarity": 66.1,
+    "stop": 92.52
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 25.48,
+    "editSimilarity": 67.65,
+    "stop": 94.76
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 29.64,
+    "editSimilarity": 75.83,
+    "stop": 99.67
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 33.94,
+    "editSimilarity": 69.96,
+    "stop": 87.52
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 33.19,
+    "editSimilarity": 70.03,
+    "stop": 92.89
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 34.03,
+    "editSimilarity": 71.2,
+    "stop": 94.44
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 38.29,
+    "editSimilarity": 78.61,
+    "stop": 99.77
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 33.43,
+    "editSimilarity": 68.43,
+    "stop": 87.0
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 33.05,
+    "editSimilarity": 69.56,
+    "stop": 93.55
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.94,
+    "editSimilarity": 71.1,
+    "stop": 95.14
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 38.24,
+    "editSimilarity": 79.11,
+    "stop": 99.77
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 33.52,
+    "editSimilarity": 68.57,
+    "stop": 86.63
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 33.19,
+    "editSimilarity": 69.66,
+    "stop": 93.08
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 33.89,
+    "editSimilarity": 71.19,
+    "stop": 95.04
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 38.1,
+    "editSimilarity": 79.14,
+    "stop": 99.67
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 22.4,
+    "editSimilarity": 57.27,
+    "stop": 83.49
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 23.94,
+    "editSimilarity": 62.32,
+    "stop": 91.67
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 24.69,
+    "editSimilarity": 64.48,
+    "stop": 93.88
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 27.24,
+    "editSimilarity": 70.81,
+    "stop": 98.24
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 28.71,
+    "editSimilarity": 63.84,
+    "stop": 85.22
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 30.39,
+    "editSimilarity": 67.4,
+    "stop": 91.59
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 31.14,
+    "editSimilarity": 68.86,
+    "stop": 93.13
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 34.75,
+    "editSimilarity": 75.24,
+    "stop": 98.09
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 27.8,
+    "editSimilarity": 61.3,
+    "stop": 84.58
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 30.06,
+    "editSimilarity": 66.37,
+    "stop": 92.01
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 31.07,
+    "editSimilarity": 68.7,
+    "stop": 94.22
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 34.86,
+    "editSimilarity": 75.54,
+    "stop": 98.5
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 27.77,
+    "editSimilarity": 61.56,
+    "stop": 84.88
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 30.13,
+    "editSimilarity": 66.67,
+    "stop": 92.35
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 30.96,
+    "editSimilarity": 68.79,
+    "stop": 94.37
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 34.52,
+    "editSimilarity": 75.52,
+    "stop": 98.65
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 20.14,
+    "editSimilarity": 61.86,
+    "stop": 84.06
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 20.5,
+    "editSimilarity": 63.48,
+    "stop": 89.78
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 20.74,
+    "editSimilarity": 64.6,
+    "stop": 91.63
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 19.43,
+    "editSimilarity": 66.26,
+    "stop": 99.31
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 27.59,
+    "editSimilarity": 67.46,
+    "stop": 85.37
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 27.8,
+    "editSimilarity": 68.52,
+    "stop": 90.64
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 28.1,
+    "editSimilarity": 69.28,
+    "stop": 92.07
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 25.15,
+    "editSimilarity": 69.86,
+    "stop": 99.31
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 26.19,
+    "editSimilarity": 64.92,
+    "stop": 83.4
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 26.97,
+    "editSimilarity": 67.51,
+    "stop": 89.81
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 27.65,
+    "editSimilarity": 68.9,
+    "stop": 91.84
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 25.0,
+    "editSimilarity": 70.05,
+    "stop": 99.34
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 26.13,
+    "editSimilarity": 64.87,
+    "stop": 83.76
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 26.94,
+    "editSimilarity": 67.49,
+    "stop": 90.2
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 27.56,
+    "editSimilarity": 68.79,
+    "stop": 92.13
+  },
+  {
+    "model": "Qwen2.5-Coder-7B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 25.0,
+    "editSimilarity": 70.0,
+    "stop": 99.28
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 27.96,
+    "editSimilarity": 59.76,
+    "stop": 71.31
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 29.32,
+    "editSimilarity": 66.22,
+    "stop": 83.25
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 29.32,
+    "editSimilarity": 66.16,
+    "stop": 83.42
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 33.28,
+    "editSimilarity": 78.22,
+    "stop": 97.74
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 34.41,
+    "editSimilarity": 62.85,
+    "stop": 70.57
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 36.5,
+    "editSimilarity": 68.92,
+    "stop": 82.46
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 36.5,
+    "editSimilarity": 68.85,
+    "stop": 82.63
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 42.05,
+    "editSimilarity": 81.21,
+    "stop": 98.25
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 31.47,
+    "editSimilarity": 58.72,
+    "stop": 66.21
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 34.13,
+    "editSimilarity": 66.48,
+    "stop": 80.48
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 34.13,
+    "editSimilarity": 66.43,
+    "stop": 80.65
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 40.86,
+    "editSimilarity": 80.61,
+    "stop": 97.45
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 32.37,
+    "editSimilarity": 59.83,
+    "stop": 67.29
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 34.97,
+    "editSimilarity": 67.31,
+    "stop": 81.15
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 34.97,
+    "editSimilarity": 67.26,
+    "stop": 81.32
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "csharp",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 41.37,
+    "editSimilarity": 80.8,
+    "stop": 97.62
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 20.62,
+    "editSimilarity": 58.91,
+    "stop": 78.68
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 21.69,
+    "editSimilarity": 62.51,
+    "stop": 89.01
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 22.35,
+    "editSimilarity": 64.35,
+    "stop": 91.3
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 25.95,
+    "editSimilarity": 73.9,
+    "stop": 99.16
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 27.54,
+    "editSimilarity": 62.79,
+    "stop": 79.66
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 28.8,
+    "editSimilarity": 65.8,
+    "stop": 89.71
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 29.59,
+    "editSimilarity": 67.39,
+    "stop": 91.77
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 34.17,
+    "editSimilarity": 76.37,
+    "stop": 99.25
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 26.6,
+    "editSimilarity": 60.4,
+    "stop": 77.7
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 28.0,
+    "editSimilarity": 64.61,
+    "stop": 89.15
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 29.31,
+    "editSimilarity": 67.04,
+    "stop": 91.87
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 33.66,
+    "editSimilarity": 76.38,
+    "stop": 99.39
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 26.27,
+    "editSimilarity": 60.55,
+    "stop": 77.61
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 27.77,
+    "editSimilarity": 64.72,
+    "stop": 89.29
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 29.13,
+    "editSimilarity": 67.26,
+    "stop": 92.1
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "java",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 33.61,
+    "editSimilarity": 76.56,
+    "stop": 99.21
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 18.57,
+    "editSimilarity": 51.45,
+    "stop": 74.33
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 20.23,
+    "editSimilarity": 56.75,
+    "stop": 85.03
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 21.28,
+    "editSimilarity": 59.52,
+    "stop": 88.78
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 24.73,
+    "editSimilarity": 68.86,
+    "stop": 98.01
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 22.33,
+    "editSimilarity": 54.27,
+    "stop": 74.48
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 24.99,
+    "editSimilarity": 60.33,
+    "stop": 86.42
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 26.23,
+    "editSimilarity": 62.84,
+    "stop": 89.16
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 30.88,
+    "editSimilarity": 72.79,
+    "stop": 98.2
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 22.55,
+    "editSimilarity": 54.67,
+    "stop": 77.0
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 25.44,
+    "editSimilarity": 60.9,
+    "stop": 87.43
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 26.72,
+    "editSimilarity": 63.76,
+    "stop": 90.47
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 30.88,
+    "editSimilarity": 72.84,
+    "stop": 98.72
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 22.36,
+    "editSimilarity": 54.49,
+    "stop": 77.0
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 25.4,
+    "editSimilarity": 60.98,
+    "stop": 87.99
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 26.79,
+    "editSimilarity": 63.74,
+    "stop": 90.88
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "python",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 30.84,
+    "editSimilarity": 72.84,
+    "stop": 98.57
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "none",
+    "exactMatch": 16.78,
+    "editSimilarity": 55.51,
+    "stop": 74.28
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 17.61,
+    "editSimilarity": 58.99,
+    "stop": 83.97
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 18.03,
+    "editSimilarity": 60.3,
+    "stop": 86.08
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "no_snippets",
+    "postprocess": "truncate_expression",
+    "exactMatch": 17.34,
+    "editSimilarity": 64.05,
+    "stop": 98.81
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "none",
+    "exactMatch": 23.66,
+    "editSimilarity": 62.12,
+    "stop": 79.05
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 24.49,
+    "editSimilarity": 64.6,
+    "stop": 86.74
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 24.94,
+    "editSimilarity": 65.69,
+    "stop": 88.59
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "comment",
+    "postprocess": "truncate_expression",
+    "exactMatch": 22.94,
+    "editSimilarity": 68.13,
+    "stop": 99.02
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "none",
+    "exactMatch": 20.23,
+    "editSimilarity": 55.45,
+    "stop": 69.07
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 22.35,
+    "editSimilarity": 61.03,
+    "stop": 81.88
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 23.18,
+    "editSimilarity": 63.03,
+    "stop": 85.07
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "inside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 21.87,
+    "editSimilarity": 67.6,
+    "stop": 99.11
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "none",
+    "exactMatch": 19.79,
+    "editSimilarity": 54.18,
+    "stop": 67.07
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix",
+    "exactMatch": 22.17,
+    "editSimilarity": 60.64,
+    "stop": 81.59
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_suffix_close",
+    "exactMatch": 22.88,
+    "editSimilarity": 62.69,
+    "stop": 84.89
+  },
+  {
+    "model": "Qwen2.5-Coder-3B",
+    "language": "typescript",
+    "template": "outside",
+    "postprocess": "truncate_expression",
+    "exactMatch": 21.72,
+    "editSimilarity": 67.61,
+    "stop": 99.2
+  }
+]

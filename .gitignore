@@ -141,3 +141,12 @@ cython_debug/
 ts_package/
 build/
 
+# granite-completebench
+data/README
+data/LICENSES
+data/csharp
+data/java
+data/python
+data/typescript
+outputs
+results
