@@ -12,6 +12,8 @@ class AutocompleteOptions:
     prefix_percentage: float = 0.3
     max_suffix_percentage: float = 0.2
     max_prompt_tokens = 1024
+    snipppet_type: Literal['none', 'inside', 'outside', 'comment'] = 'outside'
+
 
 DEFAULT_CONFIG = AutocompleteOptions()
 
@@ -46,7 +48,7 @@ class Example(TypedDict):
 
 
 
-def truncate(text: str, max_num_tokens: int, side: Literal['left'] | Literal['right'], tokenizer: PreTrainedTokenizer) -> str:
+def truncate(text: str, max_num_tokens: int, side: Literal['left', 'right'], tokenizer: PreTrainedTokenizer) -> str:
     """Truncate prompt from side given the token budget"""
 
     tokens = tokenizer.tokenize(text)
@@ -119,17 +121,53 @@ def prune_prefix_suffix(prefix: str, suffix: str, tokenizer: PreTrainedTokenizer
 
 
 def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: AutocompleteOptions = DEFAULT_CONFIG):
-    snippet_text = "\n".join(
-        f"<filename>{item['filename']}\n{item['retrieved_chunk']}\n"
-        for item in example["crossfile_context"]["list"]
-    )
-
     prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
-    prompt = (
-        snippet_text + f"<fim_prefix><filename>{example['metadata']['file']}\n" +
-        prefix + "<fim_suffix>" + suffix + "<fim_middle>"
-    )
+    if options.snipppet_type == "none":
+        prompt = (
+            "<fim_prefix>" +
+            f"<filename>{example['metadata']['file']}\n" +
+            prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+        )
+    elif options.snipppet_type == "comment":
+        comment = "# " if example["metadata"]["file"].endswith(".py") else "// "
+        def add_comment_markers(text):
+            return "\n".join(
+                comment + line
+                for line in text.strip().split("\n")
+            )
+
+        snippet_text = "\n".join(
+            f"{comment}Path: {item['filename']}\n{add_comment_markers(item['retrieved_chunk'])}"
+            for item in example["crossfile_context"]["list"]
+        )
+
+        prompt = (
+            "<fim_prefix>" +
+            snippet_text +
+            f"{comment}{example['metadata']['file']}\n" +
+            prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+        )
+    else:
+        snippet_text = "\n".join(
+            f"<filename>{item['filename']}\n{item['retrieved_chunk'].strip()}"
+            for item in example["crossfile_context"]["list"]
+        )
+
+        prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
+
+        if options.snipppet_type == 'inside':
+           prompt = (
+               "<fim_prefix>" +
+                snippet_text +
+                f"<filename>{example['metadata']['file']}\n" +
+                prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+            )
+        else:
+            prompt = (
+                snippet_text + f"<fim_prefix><filename>{example['metadata']['file']}\n" +
+                prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+            )
 
     return prompt
 
@@ -138,5 +176,5 @@ if __name__ == '__main__':
     for line in open(file, 'r'):
         example: Example = json.loads(line)
         tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.3-2b-base")
-        print(create_prompt(example, tokenizer))
+        print(create_prompt(example, tokenizer, AutocompleteOptions(snipppet_type='none')))
 
