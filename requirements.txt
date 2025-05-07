@@ -2,6 +2,11 @@ torch
 transformers
 datasets
 tree-sitter
+tree-sitter-python
+tree-sitter-java
+tree-sitter-cpp
+tree-sitter-c-sharp
+tree-sitter-typescript
 timeout-decorator
 bitsandbytes
 accelerate

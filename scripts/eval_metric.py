@@ -67,6 +67,26 @@ def process_examples(lang, args):
     return trunc_s, em_label
 
 
+def get_treesitter_language(arg: str):
+    if arg == "python":
+        import tree_sitter_python
+        return Language(tree_sitter_python.language())
+    elif arg == "csharp":
+        import tree_sitter_c_sharp
+        return Language(tree_sitter_python.language())
+    elif arg == "java":
+        import tree_sitter_java
+        return Language(tree_sitter_java.language())
+    elif arg == "cpp":
+        import tree_sitter_cpp
+        return Language(tree_sitter_cpp.language())
+    elif arg == "typescript":
+        import tree_sitter_typescript
+        return Language(tree_sitter_typescript.language())
+    else:
+        raise RuntimeError(f"Unknown language {arg}")
+
+
 def compute_metric_stmt(args):
     with open(os.path.join(args.output_dir, "prediction.jsonl"), "r") as f_pred:
         samples = []
@@ -85,10 +105,8 @@ def compute_metric_stmt(args):
     assert len(samples) == len(examples), f"{len(samples)} != {len(examples)}"
 
     global parser
-    ts_lang = "c_sharp" if args.language == "csharp" else args.language
-    language = Language(args.ts_lib, ts_lang)
-    parser = Parser()
-    parser.set_language(language)
+    language = get_treesitter_language(args.language)
+    parser = Parser(language)
 
     truncated_samples = []
     em_labels = []
