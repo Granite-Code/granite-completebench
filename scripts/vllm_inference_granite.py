@@ -38,8 +38,9 @@ def cceval_generate(
     outputs = llm.generate(prompts, sampling_params, use_tqdm=True)
 
     with open(output_file, 'w') as f:
-        for d, response in tqdm(zip(data, outputs)):
+        for d, prompt, response in tqdm(zip(data, prompts, outputs)):
             d = dict(d)
+            d['text'] = prompt
             d['pred'] = response.outputs[0].text
             d['task_id'] = d['metadata']['task_id']
             print(json.dumps(d), file=f, flush=True)
