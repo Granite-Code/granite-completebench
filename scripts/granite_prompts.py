@@ -141,6 +141,8 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
             f"{comment}Path: {item['filename']}\n{add_comment_markers(item['retrieved_chunk'])}"
             for item in example["crossfile_context"]["list"]
         )
+        # Failsafe in case of bad snippets
+        snippet_text=prune_lines_from_bottom(snippet_text, 1024, tokenizer)
 
         prompt = (
             "<fim_prefix>" +
@@ -153,6 +155,8 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
             f"<filename>{item['filename']}\n{item['retrieved_chunk'].strip()}"
             for item in example["crossfile_context"]["list"]
         )
+        # Failsafe in case of bad snippets
+        snippet_text=prune_lines_from_bottom(snippet_text, 2048, tokenizer)
 
         prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
@@ -172,9 +176,9 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
     return prompt
 
 if __name__ == '__main__':
-    file = Path(__file__).parent.parent / "data/java/line_completion_rg1_unixcoder_cosine_sim.jsonl"
+    file = Path(__file__).parent.parent / "data/java/line_completion_rg1_openai_cosine_sim.jsonl"
+    tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.3-2b-base")
     for line in open(file, 'r'):
         example: Example = json.loads(line)
-        tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.3-2b-base")
-        print(create_prompt(example, tokenizer, AutocompleteOptions(snippet_type='none')))
-
+        prompt = create_prompt(example, tokenizer, AutocompleteOptions(snippet_type='outside'))
+        print(prompt)

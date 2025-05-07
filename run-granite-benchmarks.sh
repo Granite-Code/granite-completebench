@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+set -e
+
 models=(
   ibm-granite/granite-3.3-8b-base
   ibm-granite/granite-3.3-8b-instruct

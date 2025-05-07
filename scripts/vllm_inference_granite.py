@@ -108,7 +108,7 @@ def main():
         data = [json.loads(l) for l in open(data_path, 'r').readlines()]
 
         for snippet_type in args.snippet_type:
-            print(f'====== language={language} snippet_type={snippet_type}')
+            print(f'====== model={args.model} language={language} snippet_type={snippet_type}')
             model_short = args.model.split("/")[-1]
             output_file = os.path.join(args.output_dir, f"prediction-{model_short}-{language}-snippet-{snippet_type}.jsonl")
             if os.path.exists(output_file):
