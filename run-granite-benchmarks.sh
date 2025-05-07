@@ -24,10 +24,10 @@ task=line_completion_rg1_openai_cosine_sim
 output_dir=granite-outputs/
 
 for model in ${models[@]} ; do
-  echo python scripts/vllm_inference_granite.py \
+  python scripts/vllm_inference_granite.py \
     --model $model \
     --task $task \
     --output_dir $output_dir \
     ${languages[@]/#/--language=} \
-    ${snippet_types[@]/#/--snippet_type=}
+    ${snippet_types[@]/#/--snippet-type=}
 done

@@ -12,7 +12,7 @@ class AutocompleteOptions:
     prefix_percentage: float = 0.3
     max_suffix_percentage: float = 0.2
     max_prompt_tokens = 1024
-    snipppet_type: Literal['none', 'inside', 'outside', 'comment'] = 'outside'
+    snippet_type: Literal['none', 'inside', 'outside', 'comment'] = 'outside'
 
 
 DEFAULT_CONFIG = AutocompleteOptions()
@@ -123,13 +123,13 @@ def prune_prefix_suffix(prefix: str, suffix: str, tokenizer: PreTrainedTokenizer
 def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: AutocompleteOptions = DEFAULT_CONFIG):
     prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
-    if options.snipppet_type == "none":
+    if options.snippet_type == "none":
         prompt = (
             "<fim_prefix>" +
             f"<filename>{example['metadata']['file']}\n" +
             prefix + "<fim_suffix>" + suffix + "<fim_middle>"
         )
-    elif options.snipppet_type == "comment":
+    elif options.snippet_type == "comment":
         comment = "# " if example["metadata"]["file"].endswith(".py") else "// "
         def add_comment_markers(text):
             return "\n".join(
@@ -156,7 +156,7 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
 
         prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
-        if options.snipppet_type == 'inside':
+        if options.snippet_type == 'inside':
            prompt = (
                "<fim_prefix>" +
                 snippet_text +
@@ -176,5 +176,5 @@ if __name__ == '__main__':
     for line in open(file, 'r'):
         example: Example = json.loads(line)
         tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.3-2b-base")
-        print(create_prompt(example, tokenizer, AutocompleteOptions(snipppet_type='none')))
+        print(create_prompt(example, tokenizer, AutocompleteOptions(snippet_type='none')))
 

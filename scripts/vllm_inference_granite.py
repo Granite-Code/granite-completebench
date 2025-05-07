@@ -37,9 +37,9 @@ def cceval_generate(
 
     outputs = llm.generate(prompts, sampling_params, use_tqdm=True)
 
-    out_path = os.path.join(args.output_dir, 'output_file.jsonl')
-    with open(out_path, 'w') as f:
+    with open(output_file, 'w') as f:
         for d, response in tqdm(zip(data, outputs)):
+            d = dict(d)
             d['pred'] = response.outputs[0].text
             d['task_id'] = d['metadata']['task_id']
             print(json.dumps(d), file=f, flush=True)
@@ -85,7 +85,7 @@ def main():
         help='maximum number of tokens of the model'
     )
     parser.add_argument(
-        '--generation_max_tokens', type=int, default=50,
+        '--generation_max_tokens', type=int, default=128,
         help='maximum number of tokens to generate'
     )
 
@@ -104,12 +104,13 @@ def main():
 
     # generation
     for language in args.language:
-        data_path = os.path.join(args.data_root_dir, args.language, args.task + '.jsonl')
+        data_path = os.path.join(args.data_root_dir, language, args.task + '.jsonl')
         data = [json.loads(l) for l in open(data_path, 'r').readlines()]
 
         for snippet_type in args.snippet_type:
+            print(f'====== language={language} snippet_type={snippet_type}')
             model_short = args.model.split("/")[-1]
-            output_file = os.path.join(args.output_dir, f"prediction-{model_short}-{args.language}-snippet-{args.snippet_type}.jsonl")
+            output_file = os.path.join(args.output_dir, f"prediction-{model_short}-{language}-snippet-{snippet_type}.jsonl")
             if os.path.exists(output_file):
                 continue
             options = AutocompleteOptions(snippet_type=snippet_type)
