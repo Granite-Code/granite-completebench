@@ -5,10 +5,10 @@ Script to run vllm-based inference. See README for an example.
 import argparse
 import json
 import os
-from typing import List
+from typing import List, cast
 
 from tqdm import tqdm
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, PreTrainedTokenizer
 from transformers.utils import logging
 from vllm import LLM, SamplingParams
 
@@ -26,8 +26,8 @@ def cceval_generate(
         data,
         tokenizer,
         options: AutocompleteOptions,
-        sampling_params,
-        llm,
+        sampling_params: SamplingParams,
+        llm: LLM,
         output_file: str,
 ):
     prompts = []
@@ -42,6 +42,16 @@ def cceval_generate(
             d = dict(d)
             d['text'] = prompt
             d['pred'] = response.outputs[0].text
+            if d['pred'].endswith("<|end_of_text|>"):
+                d['pred'] = d['pred'].removesuffix("<|end_of_text|>")
+                stop_reason = 'stop:<|end_of_text|>'
+            elif d['pred'].endswith("<filename>"):
+                d['pred'] = d['pred'].removesuffix("<filename>")
+                stop_reason = 'stop:<filename>'
+            else:
+                assert len(response.outputs[0].token_ids) == sampling_params.max_tokens
+                stop_reason = 'length'
+            d['stop_reason'] = stop_reason
             d['task_id'] = d['metadata']['task_id']
             print(json.dumps(d), file=f, flush=True)
 
@@ -50,8 +60,8 @@ def main():
     # get config for current run
     parser = argparse.ArgumentParser()
     parser.add_argument('--temperature', type=float, default=0.2)
-
     parser.add_argument('--top_p', type=float, default=0.95)
+
     parser.add_argument(
         '--task', type=str, required=True,
     )
@@ -95,8 +105,16 @@ def main():
 
     # load model
     llm = LLM(model=args.model, tensor_parallel_size=args.tp_size, max_model_len=args.model_max_tokens)
-    tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
-    sampling_params = SamplingParams(temperature=args.temperature, top_p=args.top_p, max_tokens=args.generation_max_tokens)
+    tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
+    stop_token_ids = cast(list[int], tokenizer.convert_tokens_to_ids(["<|end_of_text|>", "<filename>"]))
+    sampling_params = SamplingParams(
+        temperature=args.temperature,
+        top_p=args.top_p,
+        stop_token_ids=stop_token_ids,
+        skip_special_tokens=False,
+        include_stop_str_in_output=True,
+        max_tokens=args.generation_max_tokens
+    )
 
     # setup paths
     if not os.path.isdir(args.output_dir):
@@ -111,7 +129,7 @@ def main():
         for snippet_type in args.snippet_type:
             print(f'====== model={args.model} language={language} snippet_type={snippet_type}')
             model_short = args.model.split("/")[-1]
-            output_file = os.path.join(args.output_dir, f"prediction-{model_short}-{language}-snippet-{snippet_type}.jsonl")
+            output_file = os.path.join(args.output_dir, f"prediction_{model_short}_{language}_snippet_{snippet_type}.jsonl")
             if os.path.exists(output_file):
                 continue
             options = AutocompleteOptions(snippet_type=snippet_type)
