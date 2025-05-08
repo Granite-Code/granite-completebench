@@ -30,6 +30,7 @@ for model in ${models[@]} ; do
     --model $model \
     --task $task \
     --output_dir $output_dir \
+    --temperature 0 \
     ${languages[@]/#/--language=} \
     ${snippet_types[@]/#/--snippet-type=}
 done
