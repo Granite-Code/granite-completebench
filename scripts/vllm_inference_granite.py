@@ -20,6 +20,14 @@ logger = logging.get_logger(__name__)
 BUFFER = 100
 
 
+def get_fim_pad_token(tokenizer: PreTrainedTokenizer):
+    all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
+
+    if "<|fim_pad|>" in all_added_tokens:
+        return "<|fim_pad|>"
+    else:
+        return None
+
 
 def cceval_generate(
         args,
@@ -38,6 +46,8 @@ def cceval_generate(
     outputs = llm.generate(prompts, sampling_params, use_tqdm=True)
 
     filename_token = get_filename_token(tokenizer)
+    fim_pad_token = get_fim_pad_token(tokenizer)
+
     with open(output_file, 'w') as f:
         for d, prompt, response in tqdm(zip(data, prompts, outputs)):
             d = dict(d)
@@ -49,6 +59,9 @@ def cceval_generate(
             elif d['pred'].endswith(filename_token):
                 d['pred'] = d['pred'].removesuffix(filename_token)
                 stop_reason = 'stop:filename'
+            elif fim_pad_token is not None and d['pred'].endswith(fim_pad_token):
+                d['pred'] = d['pred'].removesuffix(fim_pad_token)
+                stop_reason = 'stop:pad'
             else:
                 assert len(response.outputs[0].token_ids) == sampling_params.max_tokens
                 stop_reason = 'length'
@@ -111,6 +124,9 @@ def main():
         tokenizer.eos_token_id,
         cast(int, tokenizer.convert_tokens_to_ids(get_filename_token(tokenizer)))
     ]
+    fim_pad_token = get_fim_pad_token(tokenizer)
+    if fim_pad_token is not None:
+        stop_token_ids.append(cast(int, tokenizer.convert_tokens_to_ids(fim_pad_token)))
     sampling_params = SamplingParams(
         temperature=args.temperature,
         top_p=args.top_p,
