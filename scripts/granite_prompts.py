@@ -120,14 +120,39 @@ def prune_prefix_suffix(prefix: str, suffix: str, tokenizer: PreTrainedTokenizer
     )
 
 
+def get_filename_token(tokenizer: PreTrainedTokenizer):
+    all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
+
+    if "<filename>" in all_added_tokens:
+        return "<filename>"
+    elif "<|file_sep|>" in all_added_tokens:
+        return "<|file_sep|>"
+    else:
+        raise RuntimeError("Can't find filename special token")
+
+
 def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: AutocompleteOptions = DEFAULT_CONFIG):
+    all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
+    if "<fim_prefix>" in all_added_tokens:
+        fim_prefix = "<fim_prefix>"
+        fim_suffix = "<fim_suffix>"
+        fim_middle = "<fim_middle>"
+    elif "<|fim_prefix|>" in all_added_tokens:
+        fim_prefix = "<|fim_prefix|>"
+        fim_suffix = "<|fim_suffix|>"
+        fim_middle = "<|fim_middle|>"
+    else:
+        raise RuntimeError("Can't find special FIM tokens")
+
+    filename = get_filename_token(tokenizer)
+
     prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
     if options.snippet_type == "none":
         prompt = (
-            "<fim_prefix>" +
-            f"<filename>{example['metadata']['file']}\n" +
-            prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+            fim_prefix +
+            f"{filename}{example['metadata']['file']}\n" +
+            prefix + fim_suffix + suffix + fim_middle
         )
     elif options.snippet_type == "comment":
         comment = "# " if example["metadata"]["file"].endswith(".py") else "// "
@@ -145,14 +170,18 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
         snippet_text=prune_lines_from_bottom(snippet_text, 1024, tokenizer)
 
         prompt = (
-            "<fim_prefix>" +
+            fim_prefix +
             snippet_text +
             f"{comment}{example['metadata']['file']}\n" +
-            prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+            prefix + fim_suffix + suffix + fim_middle
         )
     else:
-        snippet_text = "\n".join(
-            f"<filename>{item['filename']}\n{item['retrieved_chunk'].strip()}"
+        # The prefix here prevents a weirdness with granite-3.3-8b-instruct where if the
+        # the completion starts with <filename>, the model goes off the rails
+        snippet_text = \
+            "Please keep response concise and scope of response limited. " + \
+                "If no good completion exists, do not answer:\n" + "\n".join(
+            f"{filename}{item['filename']}\n{item['retrieved_chunk'].strip()}"
             for item in example["crossfile_context"]["list"]
         )
         # Failsafe in case of bad snippets
@@ -161,23 +190,26 @@ def create_prompt(example: Example, tokenizer: PreTrainedTokenizer, options: Aut
         prefix, suffix = prune_prefix_suffix(example["prompt"], example["right_context"], tokenizer, options)
 
         if options.snippet_type == 'inside':
-           prompt = (
-               "<fim_prefix>" +
+            prompt = (
+                fim_prefix +
                 snippet_text +
-                f"<filename>{example['metadata']['file']}\n" +
-                prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+                f"{filename}{example['metadata']['file']}\n" +
+                prefix + fim_suffix + suffix + fim_middle
             )
         else:
             prompt = (
-                snippet_text + f"<fim_prefix><filename>{example['metadata']['file']}\n" +
-                prefix + "<fim_suffix>" + suffix + "<fim_middle>"
+                snippet_text +
+                f"{filename}{example['metadata']['file']}\n" +
+                fim_prefix + prefix + fim_suffix + suffix + fim_middle
             )
 
     return prompt
 
 if __name__ == '__main__':
     file = Path(__file__).parent.parent / "data/java/line_completion_rg1_openai_cosine_sim.jsonl"
-    tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.3-2b-base")
+    model = "ibm-granite/granite-3.3-2b-base"
+    #  model = "Qwen/Qwen2.5-Coder-14B"
+    tokenizer = AutoTokenizer.from_pretrained(model)
     for line in open(file, 'r'):
         example: Example = json.loads(line)
         prompt = create_prompt(example, tokenizer, AutocompleteOptions(snippet_type='outside'))

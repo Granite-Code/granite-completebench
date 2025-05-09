@@ -6,6 +6,7 @@ models=(
   ibm-granite/granite-3.3-8b-base
   ibm-granite/granite-3.3-8b-instruct
   ibm-granite/granite-3.3-2b-base
+  Qwen/Qwen2.5-Coder-14B
 )
 
 languages=(

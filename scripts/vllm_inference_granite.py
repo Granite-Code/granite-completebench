@@ -12,7 +12,7 @@ from transformers import AutoTokenizer, PreTrainedTokenizer
 from transformers.utils import logging
 from vllm import LLM, SamplingParams
 
-from granite_prompts import create_prompt, Example, AutocompleteOptions
+from granite_prompts import create_prompt, Example, AutocompleteOptions, get_filename_token
 
 logging.set_verbosity_info()
 logger = logging.get_logger(__name__)
@@ -37,17 +37,18 @@ def cceval_generate(
 
     outputs = llm.generate(prompts, sampling_params, use_tqdm=True)
 
+    filename_token = get_filename_token(tokenizer)
     with open(output_file, 'w') as f:
         for d, prompt, response in tqdm(zip(data, prompts, outputs)):
             d = dict(d)
             d['text'] = prompt
             d['pred'] = response.outputs[0].text
-            if d['pred'].endswith("<|end_of_text|>"):
-                d['pred'] = d['pred'].removesuffix("<|end_of_text|>")
-                stop_reason = 'stop:<|end_of_text|>'
-            elif d['pred'].endswith("<filename>"):
-                d['pred'] = d['pred'].removesuffix("<filename>")
-                stop_reason = 'stop:<filename>'
+            if d['pred'].endswith(tokenizer.eos_token):
+                d['pred'] = d['pred'].removesuffix(tokenizer.eos_token)
+                stop_reason = 'stop:eos'
+            elif d['pred'].endswith(filename_token):
+                d['pred'] = d['pred'].removesuffix(filename_token)
+                stop_reason = 'stop:filename'
             else:
                 assert len(response.outputs[0].token_ids) == sampling_params.max_tokens
                 stop_reason = 'length'
@@ -106,7 +107,10 @@ def main():
     # load model
     llm = LLM(model=args.model, tensor_parallel_size=args.tp_size, max_model_len=args.model_max_tokens)
     tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
-    stop_token_ids = cast(list[int], tokenizer.convert_tokens_to_ids(["<|end_of_text|>", "<filename>"]))
+    stop_token_ids = [
+        tokenizer.eos_token_id,
+        cast(int, tokenizer.convert_tokens_to_ids(get_filename_token(tokenizer)))
+    ]
     sampling_params = SamplingParams(
         temperature=args.temperature,
         top_p=args.top_p,
