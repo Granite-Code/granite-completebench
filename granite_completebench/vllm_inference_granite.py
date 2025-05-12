@@ -77,41 +77,12 @@ def main():
     parser.add_argument('--top_p', type=float, default=0.95)
 
     parser.add_argument(
-        '--task', type=str, required=True,
-    )
-    parser.add_argument(
-        '--language', type=str, required=True,
-        choices=['csharp', 'python', 'java', 'typescript'],
-        action='append'
-    )
-    parser.add_argument(
-        '--snippet-type', type=str, choices=['none', 'inside', 'outside', 'comment'],
-        action='append', required=True,
-        help='way RAG snippets are presented to the model'
-    )
-    parser.add_argument(
-        '--data_root_dir', type=str, default='data/',
-        help='path to directory where data is organized in lang/task.jsonl format'
-    )
-    parser.add_argument(
-        '--output_dir', type=str, required=True,
-        help='path to directory where to store outputs'
-    )
-    parser.add_argument(
-        '--model', type=str, required=True,
-        help='vLLM-supported model'
-    )
-    parser.add_argument(
         '--tp_size', type=int, default=1,
         help='tensor parallel size'
     )
     parser.add_argument(
         '--model_max_tokens', type=int, default=16384,
         help='maximum number of tokens of the model'
-    )
-    parser.add_argument(
-        '--generation_max_tokens', type=int, default=128,
-        help='maximum number of tokens to generate'
     )
 
     args = parser.parse_args()

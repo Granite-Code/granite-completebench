@@ -7,6 +7,9 @@ from typing import Literal, TypedDict
 from transformers import AutoTokenizer, PreTrainedTokenizer
 
 
+from .types import Example
+
+
 @dataclass
 class AutocompleteOptions:
     prefix_percentage: float = 0.3
@@ -16,36 +19,6 @@ class AutocompleteOptions:
 
 
 DEFAULT_CONFIG = AutocompleteOptions()
-
-
-class ExampleMetadata(TypedDict):
-    task_id: str
-    repository: str
-    file: str
-    context_start_lineno: int
-    groundtruth_start_lineno: int
-    right_context_start_lineno: int
-
-
-class CrossFileItem(TypedDict):
-    retrieved_chunk: str
-    filename: str
-    score: float
-
-
-class CrossFileContext(TypedDict):
-    text: str
-    list: list[CrossFileItem]
-
-
-class Example(TypedDict):
-    prompt: str
-    groundtruth: str
-    right_context: str
-    metadata: ExampleMetadata
-    crossfile_context: CrossFileContext
-
-
 
 
 def truncate(text: str, max_num_tokens: int, side: Literal['left', 'right'], tokenizer: PreTrainedTokenizer) -> str:

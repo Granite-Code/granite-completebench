@@ -22,6 +22,7 @@ import torch
 from fuzzywuzzy import fuzz
 from nltk.tokenize import RegexpTokenizer
 from sacrebleu.tokenizers.tokenizer_intl import TokenizerV14International
+from tree_sitter import Parser
 
 from keywords.keywordlist import get_language_keywords
 
@@ -75,6 +76,8 @@ def split_identifier_into_parts(identifier: str) -> List[str]:
 
 
 def is_identifier(token, lang=None):
+    if lang == "tsx":
+        lang = "typescript"
     return True if IDENTIFIER_REGEX.match(token) \
                    and (lang is None or token not in get_language_keywords(lang)) \
         else False
@@ -158,12 +161,14 @@ def get_python_one_statement(prompt, completion, parser):
     return completion
 
 
-def postprocess_code_lines(prompt, completion, parser, lang):
+def postprocess_code_lines(prompt: str, completion: str, parser: Parser, lang: str):
     try:
-        if lang in ["java", "csharp", "typescript"]:
+        if lang in ["java", "csharp", "typescript", "tsx"]:
             return get_bracket_lang_statement(completion)
         elif lang == "python":
             return get_python_one_statement(prompt, completion, parser)
+        else:
+            raise RuntimeError("Unknown language")
     except Exception as e:
         return completion
 

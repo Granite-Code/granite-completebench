@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "granite-completebench"
+version = "0.1.0"
+description = "Autocompletion Benchmark"
+authors = [
+    {name = "Owen Taylor", email = "otaylor@redhat.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = "Apache-2.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "torch",
+    "transformers",
+    "tree-sitter",
+    "tree-sitter-python",
+    "tree-sitter-java",
+    "tree-sitter-c-sharp",
+    "tree-sitter-typescript",
+    "timeout-decorator",
+    "fuzzywuzzy",
+    "nltk",
+    "sacrebleu",
+]
+
+[project.optional-dependencies]
+vllm = [
+    "vllm >= 0.3.3",
+]
+
+prompt_builder = [
+    "rank-bm25",
+    "scikit-learn",
+]
+
+[project.scripts]
+granite-completebench = "granite_completebench.cli:main"
+
+[tool.setuptools]
+packages = ["granite_completebench", "granite_completebench.keywords"]
