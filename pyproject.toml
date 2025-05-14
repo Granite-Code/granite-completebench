@@ -28,10 +28,15 @@ dependencies = [
     "timeout-decorator",
     "fuzzywuzzy",
     "nltk",
+    "pandas",
     "sacrebleu",
 ]
 
 [project.optional-dependencies]
+dev = [
+    "black"
+]
+
 vllm = [
     "vllm >= 0.3.3",
 ]
@@ -46,3 +51,6 @@ granite-completebench = "granite_completebench.cli:main"
 
 [tool.setuptools]
 packages = ["granite_completebench", "granite_completebench.keywords"]
+
+[tool.black]
+line-length = 100

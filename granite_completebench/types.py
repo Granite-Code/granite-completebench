@@ -34,3 +34,42 @@ class Prediction(TypedDict):
     templated: str
     output: str
     stop_reason: str
+
+
+class Metrics(TypedDict):
+    em: float
+    es: float
+    stop: float
+    id_em: float
+    id_precision: float
+    id_recall: float
+    id_f1: float
+    total: int
+
+
+class LabelledMetrics(Metrics):
+    model: str
+    task: str
+    language: str
+    template: str
+    postprocess: str
+
+
+class LabelledPrediction(Prediction):
+    model: str
+    task: str
+    language: str
+    template: str
+
+
+class LabelledResult(TypedDict):
+    model: str
+    task: str
+    language: str
+    template: str
+    postprocess: str
+    task_id: str
+    postprocessed: str
+    exactMatch: bool
+    editSimilarity: float
+    stop: bool

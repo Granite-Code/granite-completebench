@@ -24,22 +24,24 @@ from nltk.tokenize import RegexpTokenizer
 from sacrebleu.tokenizers.tokenizer_intl import TokenizerV14International
 from tree_sitter import Parser
 
-from keywords.keywordlist import get_language_keywords
+from .keywords.keywordlist import get_language_keywords
 
-IDENTIFIER_REGEX = re.compile('[_a-zA-Z][_a-zA-Z0-9]*')
-REGEX_TEXT = ("(?<=[a-z0-9])(?=[A-Z])|"
-              "(?<=[A-Z0-9])(?=[A-Z][a-z])|"
-              "(?<=[0-9])(?=[a-zA-Z])|"
-              "(?<=[A-Za-z])(?=[0-9])|"
-              "(?<=[@$.'\"])(?=[a-zA-Z0-9])|"
-              "(?<=[a-zA-Z0-9])(?=[@$.'\"])|"
-              "_|\\s+")
+IDENTIFIER_REGEX = re.compile("[_a-zA-Z][_a-zA-Z0-9]*")
+REGEX_TEXT = (
+    "(?<=[a-z0-9])(?=[A-Z])|"
+    "(?<=[A-Z0-9])(?=[A-Z][a-z])|"
+    "(?<=[0-9])(?=[a-zA-Z])|"
+    "(?<=[A-Za-z])(?=[0-9])|"
+    "(?<=[@$.'\"])(?=[a-zA-Z0-9])|"
+    "(?<=[a-zA-Z0-9])(?=[@$.'\"])|"
+    "_|\\s+"
+)
 string_pattern = r'"([^"\\]*(\\.[^"\\]*)*)"|\'([^\'\\]*(\\.[^\'\\]*)*)\''
 
 SPLIT_REGEX = re.compile(REGEX_TEXT)
 
 str_tokenizer = TokenizerV14International()
-code_tokenizer = RegexpTokenizer(r'\w+')
+code_tokenizer = RegexpTokenizer(r"\w+")
 
 
 def cal_edit_sim(references, hypotheses):
@@ -61,7 +63,9 @@ def split_identifier_into_parts(identifier: str) -> List[str]:
 
     if len(identifier_parts) == 0:
         return [identifier]
-    if "_" in identifier:  # We consider "_" as part of identifier and add it back in between each semantic part
+    if (
+        "_" in identifier
+    ):  # We consider "_" as part of identifier and add it back in between each semantic part
         # if snake_case, we only split identifiers based on "_", ignore the mixed camelCase or other special symbols
         # this helps us avoid splitting identifiers like "get_2d_array" into ["get", "2", "d", "array"]
         # also avoid many other corner cases
@@ -78,17 +82,22 @@ def split_identifier_into_parts(identifier: str) -> List[str]:
 def is_identifier(token, lang=None):
     if lang == "tsx":
         lang = "typescript"
-    return True if IDENTIFIER_REGEX.match(token) \
-                   and (lang is None or token not in get_language_keywords(lang)) \
+    return (
+        True
+        if IDENTIFIER_REGEX.match(token)
+        and (lang is None or token not in get_language_keywords(lang))
         else False
+    )
 
 
 def extract_identifiers(source_code, lang):
     # the main idea is to remove String from a source code
     # then, tokenize the code to get all words and match with identifier regular expression
     # check if it is a language specific keyword, it not, then it is an identifier
-    source_code_without_strings = re.sub(string_pattern, '', source_code)
-    _ids = [t for t in code_tokenizer.tokenize(source_code_without_strings) if is_identifier(t, lang)]
+    source_code_without_strings = re.sub(string_pattern, "", source_code)
+    _ids = [
+        t for t in code_tokenizer.tokenize(source_code_without_strings) if is_identifier(t, lang)
+    ]
     return _ids
 
 
@@ -102,7 +111,7 @@ def get_bracket_lang_statement(completion):
         if completion[i] in [";", "}", "{"]:
             end_idx = i
             break
-    return completion[:end_idx + 1] if end_idx else completion
+    return completion[: end_idx + 1] if end_idx else completion
 
 
 @timeout_decorator.timeout(5)
@@ -118,8 +127,8 @@ def get_ast(parser, code):
 
 
 def remove_comments(code):
-    code = re.sub(r'#.*', '', code)
-    code = re.sub(r'//.*', '', code)
+    code = re.sub(r"#.*", "", code)
+    code = re.sub(r"//.*", "", code)
     return code
 
 
@@ -152,11 +161,11 @@ def is_code_parseable(code):
 
 def get_python_one_statement(prompt, completion, parser):
     for i in range(len(completion)):
-        code = prompt + completion[:i + 1]
+        code = prompt + completion[: i + 1]
         if not is_parse_valid(parser, code):
             continue
         if completion[i + 1] == "\n":
-            return completion[:i + 1].rstrip()
+            return completion[: i + 1].rstrip()
 
     return completion
 
@@ -181,7 +190,9 @@ def compute_mean_logp(scores, sequences, pad_token_id):
         indices = torch.unsqueeze(sequences, dim=-1)
         logp = torch.gather(logp_vocab, dim=-1, index=indices).squeeze(-1)
         sum_logp = torch.cumsum(logp, dim=1)  # batch_size, seq_len
-        denom = torch.arange(1, sum_logp.shape[1] + 1).reshape(1, -1).to(device=sum_logp.device)  # 1, seq_len
+        denom = (
+            torch.arange(1, sum_logp.shape[1] + 1).reshape(1, -1).to(device=sum_logp.device)
+        )  # 1, seq_len
         mean_logp = (sum_logp / denom).tolist()  # batch_size, seq_len
         sequence_lengths = (sequences != pad_token_id).sum(1).tolist()  # batch_size
         mean_logp = [mean_logp[idx][l - 1] for idx, l in enumerate(sequence_lengths)]

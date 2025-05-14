@@ -5,8 +5,12 @@ autocompletion. The target here is tests that we need for the
 development of [Granite.Code](https://granitecode.ai). In particular,
 we're interested in the combination of:
 
- * Prompts and postprocessing in the style of [Continue](https://www.continue.dev/).
- * The [IBM Granite Models](https://www.ibm.com/granite)
+- Prompts and postprocessing in the style of [Continue](https://www.continue.dev/).
+- The [IBM Granite Models](https://www.ibm.com/granite)
+
+## Installation
+
+- Uncompress the CrossCodeEval data via `tar -xvJf data/crosscodeeval_data.tar.xz -C data/`
 
 ```sh
 sh ./run-granite-benchmarks.sh

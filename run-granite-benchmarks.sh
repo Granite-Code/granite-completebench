@@ -16,8 +16,8 @@ languages=(
   typescript
 )
 
-snippet_types=(
-  none
+templates=(
+  no_snippets
   outside
   inside
   comment
@@ -33,5 +33,5 @@ for model in ${models[@]} ; do
     --output_dir $output_dir \
     --temperature 0 \
     ${languages[@]/#/--language=} \
-    ${snippet_types[@]/#/--snippet-type=}
+    ${templates[@]/#/--template=}
 done

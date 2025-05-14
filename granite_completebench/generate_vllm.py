@@ -1,4 +1,3 @@
-
 import json
 import os
 from typing import cast
@@ -23,12 +22,12 @@ def get_fim_pad_token(tokenizer: PreTrainedTokenizer):
 
 
 def generate(
-        data: list[Example],
-        tokenizer: PreTrainedTokenizer,
-        options: AutocompleteOptions,
-        sampling_params: SamplingParams,
-        llm: LLM,
-        output_file: str,
+    data: list[Example],
+    tokenizer: PreTrainedTokenizer,
+    options: AutocompleteOptions,
+    sampling_params: SamplingParams,
+    llm: LLM,
+    output_file: str,
 ):
     prompts = []
     for d in tqdm(data, desc="Generating prompts"):
@@ -39,27 +38,27 @@ def generate(
 
     filename_token = get_filename_token(tokenizer)
     fim_pad_token = get_fim_pad_token(tokenizer)
-    eos_token= tokenizer.eos_token
+    eos_token = tokenizer.eos_token
     assert isinstance(eos_token, str)
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         for d, prompt, response in tqdm(zip(data, prompts, outputs)):
             output = response.outputs[0].text
             if output.endswith(eos_token):
                 output = output.removesuffix(eos_token)
-                stop_reason = 'stop:eos'
+                stop_reason = "stop:eos"
             elif output.endswith(filename_token):
                 output = output.removesuffix(filename_token)
-                stop_reason = 'stop:filename'
+                stop_reason = "stop:filename"
             elif fim_pad_token is not None and output.endswith(fim_pad_token):
                 output = output.removesuffix(fim_pad_token)
-                stop_reason = 'stop:pad'
+                stop_reason = "stop:pad"
             else:
                 assert len(response.outputs[0].token_ids) == sampling_params.max_tokens
-                stop_reason = 'length'
+                stop_reason = "length"
 
             prediction: Prediction = {
-                "task_id": d['metadata']['task_id'],
+                "task_id": d["metadata"]["task_id"],
                 "templated": prompt,
                 "output": output,
                 "stop_reason": stop_reason,
@@ -72,11 +71,13 @@ def generate_for_model(args: GenerateVllmArgs, model: str):
 
     # load model
     llm = LLM(model=model, tensor_parallel_size=args.tp_size, max_model_len=args.model_max_tokens)
-    tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
+    tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(
+        args.model, trust_remote_code=True
+    )
 
     stop_token_ids = [
         tokenizer.eos_token_id,
-        cast(int, tokenizer.convert_tokens_to_ids(get_filename_token(tokenizer)))
+        cast(int, tokenizer.convert_tokens_to_ids(get_filename_token(tokenizer))),
     ]
     fim_pad_token = get_fim_pad_token(tokenizer)
     if fim_pad_token is not None:
@@ -87,25 +88,27 @@ def generate_for_model(args: GenerateVllmArgs, model: str):
         stop_token_ids=stop_token_ids,
         skip_special_tokens=False,
         include_stop_str_in_output=True,
-        max_tokens=args.generation_max_tokens
+        max_tokens=args.generation_max_tokens,
     )
 
     # setup paths
     if not os.path.isdir(args.output_dir):
-        print(f'==== Output dir does not exist. Creating: {args.output_dir} ====')
+        print(f"==== Output dir does not exist. Creating: {args.output_dir} ====")
         os.makedirs(args.output_dir)
 
     # generation
     for language in args.language:
-        data_path = os.path.join(args.data_root_dir, language, args.task + '.jsonl')
-        data = [json.loads(l) for l in open(data_path, 'r').readlines()]
+        data_path = os.path.join(args.data_root_dir, language, args.task + ".jsonl")
+        data = [json.loads(l) for l in open(data_path, "r").readlines()]
 
-        for snippet_type in args.snippet_type:
-            print(f'====== model={args.model} language={language} snippet_type={snippet_type}')
-            output_file = os.path.join(args.output_dir, f"prediction_{model_short}_{language}_snippet_{snippet_type}.jsonl")
+        for template in args.template:
+            print(f"====== model={args.model} language={language} template={template}")
+            output_file = os.path.join(
+                args.output_dir, f"prediction_{model_short}_{language}_snippet_{template}.jsonl"
+            )
             if os.path.exists(output_file):
                 continue
-            options = AutocompleteOptions(snippet_type=snippet_type)
+            options = AutocompleteOptions(template=template)
             generate(data, tokenizer, options, sampling_params, llm, output_file)
 
 
