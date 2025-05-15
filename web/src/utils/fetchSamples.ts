@@ -103,5 +103,19 @@ export async function fetchSamples(
     });
   }
 
+  // The samples for each task/language combination are consistent between different files,
+  // but not sorted consistently; sort them so that when the user switches parameters,
+  // they keep viewing the same sample.
+
+  function compareTaskIds(a: Sample, b: Sample) {
+    if (a.output.task_id === b.output.task_id) {
+      return 0;
+    } else {
+      return a.output.task_id < b.output.task_id ? -1 : 1;
+    }
+  }
+
+  returnValue.sort(compareTaskIds);
+
   return returnValue;
 }
