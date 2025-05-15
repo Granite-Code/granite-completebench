@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 import SampleDisplay from "./SampleDisplay";
 import { Dropdown } from "./Dropdown";
 import { fetchSamples } from "../utils/fetchSamples";
+import { BASE } from "../site";
 import type { Sample } from "../types";
 import SampleSelector from "./SampleSelector";
 
@@ -54,7 +55,7 @@ export function Samples() {
   useEffect(() => {
     async function loadManifest() {
       try {
-        const response = await fetch("/samples/manifest.json");
+        const response = await fetch(BASE + "/samples/manifest.json");
 
         if (!response.ok) {
           throw new Error(`Failed to load manifest: ${response.statusText}`);
@@ -76,7 +77,9 @@ export function Samples() {
   useEffect(() => {
     if (isLoading || isInitialized) return;
 
-    setSearchParams((prev) => validateSearchParams(prev, manifest));
+    setSearchParams(validateSearchParams(searchParams, manifest), {
+      replace: true,
+    });
     setIsInitialized(true);
   }, [isLoading, isInitialized, manifest, searchParams]);
 

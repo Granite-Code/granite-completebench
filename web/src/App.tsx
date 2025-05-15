@@ -3,12 +3,13 @@ import "./App.css";
 import { About } from "./components/About";
 import { Samples } from "./components/Samples";
 import { Metrics } from "./components/Metrics";
+import { BASE } from "./site";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={BASE}>
       <div id="header">
-        <img src="/granitecode.svg" id="headerLogo" />
+        <img src={BASE + "/granitecode.svg"} id="headerLogo" />
         <div id="headerTitle">granite-completebench</div>
         <NavLink className="headerLink" to="/">
           About

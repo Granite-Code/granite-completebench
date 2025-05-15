@@ -4,6 +4,7 @@ import { plugin as markdownPlugin, Mode } from "vite-plugin-markdown";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/granite-completebench/",
   plugins: [
     react(),
     markdownPlugin({

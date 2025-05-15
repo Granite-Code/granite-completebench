@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import {
   METRIC_DESCRIPTIONS,
   METRICS,
@@ -56,8 +57,8 @@ export function MetricsTable({ store, postprocessor }: MetricsTableProps) {
                 store.languages.map((language) => (
                   <td key={metric + "-" + language}>
                     {language != "Average" ? (
-                      <a
-                        href={`/samples?model=${model}&language=${language}&template=${template}&postprocessor=${postprocessor}`}
+                      <Link
+                        to={`/samples?model=${model}&language=${language}&template=${template}&postprocessor=${postprocessor}`}
                       >
                         {store.getFormattedMetric(
                           {
@@ -68,7 +69,7 @@ export function MetricsTable({ store, postprocessor }: MetricsTableProps) {
                           },
                           metric,
                         )}
-                      </a>
+                      </Link>
                     ) : (
                       store.getFormattedMetric(
                         {

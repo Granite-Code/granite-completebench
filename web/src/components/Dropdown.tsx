@@ -19,11 +19,14 @@ export function Dropdown({
       name={paramKey}
       disabled={options.length === 0}
       onChange={(e) => {
-        setSearchParams((prev) => {
-          const newParams = new URLSearchParams(prev);
-          newParams.set(paramKey, e.target.value);
-          return newParams;
-        });
+        setSearchParams(
+          (prev) => {
+            const newParams = new URLSearchParams(prev);
+            newParams.set(paramKey, e.target.value);
+            return newParams;
+          },
+          { replace: true },
+        );
       }}
     >
       {options.map((option) => (

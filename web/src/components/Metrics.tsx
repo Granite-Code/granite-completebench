@@ -46,11 +46,14 @@ export function Metrics() {
 
     let newPostProcessor = validatedPostProcessor(searchParams, store);
     if (newPostProcessor != searchParams.get("postprocessor")) {
-      setSearchParams((params) => {
-        let newParams = new URLSearchParams(params);
-        newParams.set("postprocessor", newPostProcessor);
-        return newParams;
-      });
+      setSearchParams(
+        (params) => {
+          let newParams = new URLSearchParams(params);
+          newParams.set("postprocessor", newPostProcessor);
+          return newParams;
+        },
+        { replace: true },
+      );
     }
   }, [store, searchParams, setSearchParams]);
 
@@ -64,7 +67,12 @@ export function Metrics() {
         <span className="label">Postprocess:&nbsp;</span>
         <select
           value={postprocessor}
-          onChange={(e) => setSearchParams({ postprocessor: e.target.value })}
+          onChange={(e) =>
+            setSearchParams(
+              { postprocessor: e.target.value },
+              { replace: true },
+            )
+          }
         >
           {store.postprocessors.map((p) => (
             <option key={p} value={p}>

@@ -1,3 +1,4 @@
+import { BASE } from "../site";
 import {
   type Sample,
   type Example,
@@ -58,9 +59,9 @@ export async function fetchSamples(
   template: string,
   postprocessor: string,
 ): Promise<Sample[]> {
-  const inputUrl = `/samples/_/${language}/inputs.jsonl`;
-  const outputUrl = `/samples/${model}/${language}/${template}/outputs.jsonl`;
-  const resultsUrl = `/samples/${model}/${language}/${template}/${postprocessor}/results.jsonl`;
+  const inputUrl = `${BASE}/samples/_/${language}/inputs.jsonl`;
+  const outputUrl = `${BASE}/samples/${model}/${language}/${template}/outputs.jsonl`;
+  const resultsUrl = `${BASE}/samples/${model}/${language}/${template}/${postprocessor}/results.jsonl`;
 
   const [inputResponse, outputResponse, resultsResponse] = await Promise.all([
     fetch(inputUrl),

@@ -1,3 +1,5 @@
+import { BASE } from "../site";
+
 export const METRIC_DESCRIPTIONS: { [K in MetricName]: string } = {
   exactMatch: "Exact Match %",
   editSimilarity: "Edit Similarity",
@@ -37,7 +39,7 @@ export class MetricsStore {
   }
 
   async load() {
-    const response = await fetch("/metrics.json");
+    const response = await fetch(BASE + "/metrics.json");
     const data = await response.json();
 
     const models = new Set<string>();
