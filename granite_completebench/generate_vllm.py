@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 from typing import cast
 
 from tqdm import tqdm
@@ -7,9 +8,10 @@ from transformers import AutoTokenizer, PreTrainedTokenizer
 from transformers.utils import logging
 from vllm import LLM, SamplingParams
 
-from .types import Example, Prediction
-from .granite_prompts import create_prompt, AutocompleteOptions, get_filename_token
 from .cli import GenerateVllmArgs
+from .file_utils import read_jsonl, write_jsonl
+from .granite_prompts import create_prompt, AutocompleteOptions, get_filename_token
+from .types import Example, Prediction
 
 
 def get_fim_pad_token(tokenizer: PreTrainedTokenizer):
@@ -27,7 +29,7 @@ def generate(
     options: AutocompleteOptions,
     sampling_params: SamplingParams,
     llm: LLM,
-    output_file: str,
+    output_file: Path,
 ):
     prompts = []
     for d in tqdm(data, desc="Generating prompts"):
@@ -41,7 +43,7 @@ def generate(
     eos_token = tokenizer.eos_token
     assert isinstance(eos_token, str)
 
-    with open(output_file, "w") as f:
+    with write_jsonl(output_file, create_parents=True) as writer:
         for d, prompt, response in tqdm(zip(data, prompts, outputs)):
             output = response.outputs[0].text
             if output.endswith(eos_token):
@@ -63,7 +65,7 @@ def generate(
                 "output": output,
                 "stop_reason": stop_reason,
             }
-            print(json.dumps(prediction), file=f, flush=True)
+            writer.append(prediction)
 
 
 def generate_for_model(args: GenerateVllmArgs, model: str):
@@ -98,14 +100,12 @@ def generate_for_model(args: GenerateVllmArgs, model: str):
 
     # generation
     for language in args.language:
-        data_path = os.path.join(args.data_root_dir, language, args.task + ".jsonl")
-        data = [json.loads(l) for l in open(data_path, "r").readlines()]
+        data_path = Path(args.data_root_dir) / language /  (args.task + ".jsonl")
+        data = [l for l in read_jsonl(data_path)]
 
         for template in args.template:
-            print(f"====== model={args.model} language={language} template={template}")
-            output_file = os.path.join(
-                args.output_dir, f"prediction_{model_short}_{language}_snippet_{template}.jsonl"
-            )
+            print(f"====== model={model} language={language} template={template}")
+            output_file = Path(args.output_dir) / model_short / language / template / "prediction.jsonl"
             if os.path.exists(output_file):
                 continue
             options = AutocompleteOptions(template=template)

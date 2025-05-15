@@ -16,11 +16,13 @@ import json
 import os
 from pathlib import Path
 import random
+from venv import create
 
 import pandas
 
 from .cli import EvaluateArgs
 from .eval_metric import compute_metric_stmt
+from .file_utils import read_json, read_jsonl, write_json, write_jsonl
 from .postprocess import PostProcessor, create_postprocessor
 from .paths import get_output_path, get_prompt_path, get_result_dir
 from .types import Example, LabelledMetrics, LabelledPrediction, LabelledResult, Metrics, Prediction
@@ -44,8 +46,7 @@ def evaluate(
 
     results_file = result_dir / "results.json"
     if results_file.exists():
-        with open(results_file, "r") as f:
-            res: Metrics = json.load(f)
+        res: Metrics = read_json(results_file)
     else:
         res = compute_metric_stmt(output_file, result_dir, prompt_file, language, postprocessor)
     return LabelledMetrics(
@@ -120,27 +121,22 @@ def write_metrics_json(results: list[LabelledMetrics]):
         for result in results
     ]
 
-    with open("web/public/metrics.json", "w") as f:
-        json.dump(json_results, f, indent=2)
+    write_json(Path("web/public/metrics.json"), json_results, create_parents=True)
 
 
 def write_samples(args: EvaluateArgs):
     manifest_path = Path("web/public/samples/manifest.json")
-    with open(manifest_path, "w") as f:
-        json.dump(
-            {
-                "models": [m.split("/")[-1] for m in args.model],
-                "languages": args.language,
-                "templates": args.template,
-                "postprocessors": args.postprocess,
-            },
-            f,
-        )
+    write_json(manifest_path, {
+        "models": [m.split("/")[-1] for m in args.model],
+        "languages": args.language,
+        "templates": args.template,
+        "postprocessors": args.postprocess,
+    }, create_parents=True)
 
     for language in args.language:
         prompt_file = get_prompt_path(args, language)
 
-        with open(prompt_file) as f:
+        with open(prompt_file, encoding="utf-8") as f:
             line_count = 0
             for line in f:
                 line_count += 1
@@ -148,32 +144,21 @@ def write_samples(args: EvaluateArgs):
         random.seed(42)
         selected_line_nos = set(random.sample(range(line_count), 25))
 
-        def iterate_selected_lines(path: Path):
-            with open(path) as f:
-                i = 0
-                for line in f:
-                    if i in selected_line_nos:
-                        yield line
-                    i += 1
-
+        selected_task_ids = set()
         sample_inputs_file = Path("web/public/samples/_") / language / "inputs.jsonl"
-        sample_inputs_file.parent.mkdir(parents=True, exist_ok=True)
-
-        with open(sample_inputs_file, "w") as sample_input_f:
-            selected_task_ids = set()
-            for line in iterate_selected_lines(prompt_file):
-                example: Example = json.loads(line)
-                sample_input_f.write(line)
-                selected_task_ids.add(example["metadata"]["task_id"])
+        with write_jsonl(sample_inputs_file, create_parents=True) as writer:
+            i = 0
+            example: Example
+            for example in read_jsonl(prompt_file):
+                if i in selected_line_nos:
+                    writer.append(example)
+                    selected_task_ids.add(example["metadata"]["task_id"])
+                i += 1
 
         def iterate_selected_tasks(path: Path):
-            with open(path) as f:
-                i = 0
-                for line in f:
-                    data = json.loads(line)
-                    if data["task_id"] in selected_task_ids:
-                        yield data
-                    i += 1
+            for data in read_jsonl(path):
+                if data["task_id"] in selected_task_ids:
+                    yield data
 
         for model in args.model:
             model_short = model.split("/")[-1]
@@ -181,23 +166,19 @@ def write_samples(args: EvaluateArgs):
                 sample_outputs_file = (
                     Path("web/public/samples") / model_short / language / template / "outputs.jsonl"
                 )
-                sample_outputs_file.parent.mkdir(parents=True, exist_ok=True)
-
-                with open(sample_outputs_file, "w") as sample_output_f:
+                with write_jsonl(sample_outputs_file, create_parents=True) as writer:
                     output_file = get_output_path(args, model, language, template)
                     prediction: Prediction
                     for prediction in iterate_selected_tasks(output_file):
-                        json.dump(
+                        writer.append(
                             LabelledPrediction(
                                 **prediction,
                                 model=model,
                                 task=args.task,
                                 language=language,
                                 template=template,
-                            ),
-                            sample_output_f,
+                            )
                         )
-                        sample_output_f.write("\n")
 
                 for postprocess in args.postprocess:
                     result_dir = get_result_dir(args, model, language, template, postprocess)
@@ -215,14 +196,13 @@ def write_samples(args: EvaluateArgs):
                         / postprocess
                         / "results.jsonl"
                     )
-                    sample_results_file.parent.mkdir(parents=True, exist_ok=True)
-                    with open(sample_results_file, "w") as sample_result_f:
+                    with write_jsonl(sample_results_file, create_parents=True) as writer:
                         prediction_file = result_dir / "prediction_truncated.jsonl"
                         for truncated in iterate_selected_tasks(prediction_file):
                             task_id = truncated["task_id"]
                             result = results_map[task_id]
 
-                            json.dump(
+                            writer.append(
                                 LabelledResult(
                                     model=model,
                                     task=args.task,
@@ -234,10 +214,8 @@ def write_samples(args: EvaluateArgs):
                                     exactMatch=result["em"] == 1,
                                     editSimilarity=result["es"],
                                     stop=result["stop"],
-                                ),
-                                sample_result_f,
+                                )
                             )
-                            sample_result_f.write("\n")
 
 
 def command(args: EvaluateArgs):

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import SampleDisplay from "./SampleDisplay";
+import { Dropdown } from "./Dropdown";
+import { fetchSamples } from "../utils/fetchSamples";
+import type { Sample } from "../types";
+import SampleSelector from "./SampleSelector";
 
 interface Manifest {
   models: string[];
@@ -12,63 +16,24 @@ interface Manifest {
 // Default empty options to use before loading
 const emptyOptions: string[] = [];
 
-// Helper function to get a validated option
-const getValidatedOption = (
+function validateSearchParams(
   searchParams: URLSearchParams,
-  key: string,
-  options: string[],
-) => {
-  if (options.length === 0) return "";
+  manifest: Manifest,
+) {
+  let newSearchParams: URLSearchParams | undefined;
 
-  const selectedValue = searchParams.get(key) || options[0];
-
-  return options.indexOf(selectedValue) >= 0 ? selectedValue : options[0];
-};
-
-function Dropdown({
-  paramKey,
-  options,
-}: {
-  paramKey: string;
-  options: string[];
-}) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    if (options.length === 0) return;
-
-    const value = getValidatedOption(searchParams, paramKey, options);
-    if (searchParams.get(paramKey) != value) {
-      setSearchParams((prev) => {
-        const newParams = new URLSearchParams(prev);
-        newParams.set(paramKey, value);
-        return newParams;
-      });
+  for (const [pluralKey, options] of Object.entries(manifest)) {
+    const key = pluralKey.slice(0, -1);
+    let value = searchParams.get(key) || "";
+    if (!options.includes(value)) {
+      value = options.length > 0 ? options[0] : "";
+      if (newSearchParams === undefined)
+        newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set(key, value);
     }
-  }, [searchParams, options, paramKey, setSearchParams]);
+  }
 
-  const value = getValidatedOption(searchParams, paramKey, options);
-
-  return (
-    <select
-      value={value}
-      name={paramKey}
-      disabled={options.length === 0}
-      onChange={(e) => {
-        setSearchParams((prev) => {
-          const newParams = new URLSearchParams(prev);
-          newParams.set(paramKey, e.target.value);
-          return newParams;
-        });
-      }}
-    >
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  );
+  return newSearchParams ?? searchParams;
 }
 
 export function Samples() {
@@ -80,7 +45,10 @@ export function Samples() {
     postprocessors: emptyOptions,
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [samples, setSamples] = useState<Sample[]>([]);
+  const [current, setCurrent] = useState<number | undefined>();
 
   // Load manifest.json
   useEffect(() => {
@@ -105,36 +73,45 @@ export function Samples() {
     loadManifest();
   }, []);
 
-  // Update URL params when manifest is loaded
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || isInitialized) return;
 
-    const model = getValidatedOption(searchParams, "model", manifest.models);
-    const language = getValidatedOption(
-      searchParams,
-      "language",
-      manifest.languages,
-    );
-    const template = getValidatedOption(
-      searchParams,
-      "template",
-      manifest.templates,
-    );
-    const postprocessor = getValidatedOption(
-      searchParams,
-      "postprocessor",
-      manifest.postprocessors,
-    );
+    setSearchParams((prev) => validateSearchParams(prev, manifest));
+    setIsInitialized(true);
+  }, [isLoading, isInitialized, manifest, searchParams]);
 
-    setSearchParams({
-      model,
-      language,
-      template,
-      postprocessor,
-    });
-  }, [manifest, isLoading, setSearchParams]);
+  useEffect(() => {
+    if (!isInitialized) return;
 
-  if (isLoading) {
+    let validated = validateSearchParams(searchParams, manifest);
+    const model = validated.get("model");
+    const language = validated.get("language");
+    const template = validated.get("template");
+    const postprocessor = validated.get("postprocessor");
+    if (!model || !language || !template || !postprocessor) return;
+
+    const fetchData = async () => {
+      try {
+        const newSamples = await fetchSamples(
+          model,
+          language,
+          template,
+          postprocessor,
+        );
+        setSamples(newSamples);
+
+        if (current === undefined || current >= samples.length) {
+          setCurrent(0);
+        }
+      } catch (error) {
+        console.log("Error fetching samples", error);
+      }
+    };
+
+    fetchData();
+  }, [isInitialized, searchParams]);
+
+  if (!isInitialized || samples.length == 0 || current === undefined) {
     return <div>Loading options...</div>;
   }
 
@@ -144,29 +121,22 @@ export function Samples() {
 
   return (
     <div>
-      <Dropdown paramKey="model" options={manifest.models} />
-      <Dropdown paramKey="language" options={manifest.languages} />
-      <Dropdown paramKey="template" options={manifest.templates} />
-      <Dropdown paramKey="postprocessor" options={manifest.postprocessors} />
-
-      <SampleDisplay
-        model={getValidatedOption(searchParams, "model", manifest.models)}
-        language={getValidatedOption(
-          searchParams,
-          "language",
-          manifest.languages,
-        )}
-        template={getValidatedOption(
-          searchParams,
-          "template",
-          manifest.templates,
-        )}
-        postprocessor={getValidatedOption(
-          searchParams,
-          "postprocessor",
-          manifest.postprocessors,
-        )}
-      />
+      <div id="sampleNavigation">
+        <span className="label">Model:&nbsp;</span>
+        <Dropdown paramKey="model" options={manifest.models} />
+        <span className="label">Language:&nbsp;</span>
+        <Dropdown paramKey="language" options={manifest.languages} />
+        <span className="label">Template:&nbsp;</span>
+        <Dropdown paramKey="template" options={manifest.templates} />
+        <span className="label">Postprocess:&nbsp;</span>
+        <Dropdown paramKey="postprocessor" options={manifest.postprocessors} />
+        <SampleSelector
+          count={samples.length}
+          current={current}
+          setCurrent={setCurrent}
+        />
+      </div>
+      <SampleDisplay sample={samples[current]} />
     </div>
   );
 }

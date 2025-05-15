@@ -6,6 +6,8 @@ from typing import Literal, TypedDict
 
 from transformers import AutoTokenizer, PreTrainedTokenizer
 
+from .file_utils import read_jsonl
+
 
 from .types import Example
 
@@ -45,7 +47,7 @@ def prune_lines_from_top(text: str, max_num_tokens: int, tokenizer: PreTrainedTo
     if pruned_prefix == "" or pruned_prefix[-1] == "\n":
         return pruned_text
     first = pruned_text.find("\n")
-    if first:
+    if first >= 0:
         return pruned_text[first + 1 :]
     else:
         return ""
@@ -61,7 +63,7 @@ def prune_lines_from_bottom(text: str, max_num_tokens: int, tokenizer: PreTraine
     ):
         return pruned_text
     last = pruned_text.rfind("\n")
-    if last:
+    if last >= 0:
         return pruned_text[0 : last + 1]
     else:
         return ""
@@ -186,7 +188,7 @@ def create_prompt(
 
         if options.template == "inside":
             prompt = (
-                fim_prefix
+                 fim_prefix
                 + snippet_text
                 + f"{filename}{example['metadata']['file']}\n"
                 + prefix
@@ -209,11 +211,11 @@ def create_prompt(
 
 
 if __name__ == "__main__":
-    file = Path(__file__).parent.parent / "data/java/line_completion_rg1_openai_cosine_sim.jsonl"
-    model = "ibm-granite/granite-3.3-2b-base"
+    file = Path(__file__).parent.parent / "data/python/line_completion_rg1_openai_cosine_sim.jsonl"
+    model = "ibm-granite/granite-3.3-8b-base"
     #  model = "Qwen/Qwen2.5-Coder-14B"
     tokenizer = AutoTokenizer.from_pretrained(model)
-    for line in open(file, "r"):
-        example: Example = json.loads(line)
+    example: Example
+    for example in read_jsonl(file):
         prompt = create_prompt(example, tokenizer, AutocompleteOptions(template="outside"))
-        print(prompt)
+        # print(prompt)

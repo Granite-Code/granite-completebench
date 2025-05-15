@@ -40,6 +40,11 @@ export interface LabelledPrediction extends Prediction {
   template: string;
 }
 
+export interface PredictionWithTruncated extends LabelledPrediction {
+  truncatedPrefix: string;
+  truncatedSuffix: string;
+}
+
 export interface LabelledResult {
   model: string;
   task: string;
@@ -55,6 +60,6 @@ export interface LabelledResult {
 
 export interface Sample {
   input: Example;
-  output: LabelledPrediction;
+  output: PredictionWithTruncated;
   result: LabelledResult;
 }

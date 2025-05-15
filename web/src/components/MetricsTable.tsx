@@ -55,9 +55,30 @@ export function MetricsTable({ store, postprocessor }: MetricsTableProps) {
               {METRICS.map((metric) =>
                 store.languages.map((language) => (
                   <td key={metric + "-" + language}>
-                    {store.getFormattedMetric(
-                      { model, language, template, postprocess: postprocessor },
-                      metric,
+                    {language != "Average" ? (
+                      <a
+                        href={`/samples?model=${model}&language=${language}&template=${template}&postprocessor=${postprocessor}`}
+                      >
+                        {store.getFormattedMetric(
+                          {
+                            model,
+                            language,
+                            template,
+                            postprocess: postprocessor,
+                          },
+                          metric,
+                        )}
+                      </a>
+                    ) : (
+                      store.getFormattedMetric(
+                        {
+                          model,
+                          language,
+                          template,
+                          postprocess: postprocessor,
+                        },
+                        metric,
+                      )
                     )}
                   </td>
                 )),

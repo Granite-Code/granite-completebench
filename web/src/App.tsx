@@ -26,11 +26,13 @@ function App() {
           GitHub
         </a>
       </div>
-      <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/metrics" element={<Metrics />} />
-        <Route path="/samples" element={<Samples />} />
-      </Routes>
+      <div id="main">
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/metrics" element={<Metrics />} />
+          <Route path="/samples" element={<Samples />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

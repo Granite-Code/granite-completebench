@@ -1,11 +1,13 @@
 import json
 from functools import cache, partial
 from pathlib import Path
+from venv import create
 
 import torch.multiprocessing as mp
 from tqdm import tqdm
 
 from .eval_utils import postprocess_code_lines, extract_identifiers, cal_edit_sim, remove_comments
+from .file_utils import read_jsonl, write_json, write_jsonl
 from .postprocess import PostProcessor
 from .types import Example, Metrics, Prediction
 import os
@@ -70,22 +72,16 @@ def process_examples(lang: str, postprocessor: PostProcessor, args: tuple[Predic
 def compute_metric_stmt(
     infile: Path, results_base: Path, prompt_file: Path, language: str, postprocessor: PostProcessor
 ) -> Metrics:
-    print(prompt_file)
-    with open(infile, "r") as f_pred:
-        samples = []
-        for l in f_pred.readlines():
-            samples.append(json.loads(l))
+    samples = [d for d in read_jsonl(infile)]
 
     examples = {}
-    with open(prompt_file, "r") as f_in:
-        for l in f_in.readlines():
-            ex = json.loads(l)
-            examples[ex["metadata"]["task_id"]] = {
-                "metadata": ex["metadata"],
-                "prompt": ex["prompt"],
-                "groundtruth": ex["groundtruth"],
-                "right_context": ex["right_context"],
-            }
+    for ex in read_jsonl(prompt_file):
+        examples[ex["metadata"]["task_id"]] = {
+            "metadata": ex["metadata"],
+            "prompt": ex["prompt"],
+            "groundtruth": ex["groundtruth"],
+            "right_context": ex["right_context"],
+        }
 
     assert len(samples) == len(examples), f"{len(samples)} != {len(examples)}"
 
@@ -108,9 +104,9 @@ def compute_metric_stmt(
 
     exact_match = 0
     stop = 0
-    with (open(results_base / "prediction_truncated.jsonl", "w", encoding="utf-8") as pt,):
+    with write_jsonl(results_base / "prediction_truncated.jsonl", create_parents=True) as pt:
         for trunc_s, em_label in zip(truncated_samples, em_labels):
-            pt.write(json.dumps(trunc_s) + "\n")
+            pt.append(trunc_s)
             if em_label == 1:
                 exact_match += 1
             if trunc_s["stop"]:
@@ -185,9 +181,9 @@ def compute_metric_stmt(
         f"F1 {id_f1}"
     )
 
-    with open(os.path.join(results_base / "detailed_results.jsonl"), "w") as f:
+    with write_jsonl(results_base / "detailed_results.jsonl", create_parents=True) as writer:
         for dr in detailed_results:
-            f.write(json.dumps(dr) + "\n")
+            writer.append(dr)
 
     res: Metrics = {
         "em": em_ratio,
@@ -202,7 +198,6 @@ def compute_metric_stmt(
 
     # write the results to a file
     print(f'writing results to {results_base}/results.json")')
-    with open(results_base / "results.json", "w") as f:
-        f.write(json.dumps(res, indent=2))
-
+    write_json(results_base / "results.json", res, create_parents=True)
+               
     return res

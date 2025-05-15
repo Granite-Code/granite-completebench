@@ -3,6 +3,7 @@ import {
   type Example,
   type LabelledPrediction,
   type LabelledResult,
+  type PredictionWithTruncated,
 } from "../types";
 
 const parseJsonl = async (response: Response): Promise<any[]> => {
@@ -12,6 +13,44 @@ const parseJsonl = async (response: Response): Promise<any[]> => {
   }
   return lines.map((line) => JSON.parse(line));
 };
+
+function commonPrefix(str1: string, str2: string) {
+  for (let i = 0; i < str1.length && i < str2.length; i++) {
+    if (str1[i] !== str2[i]) {
+      return str1.slice(0, i);
+    }
+  }
+
+  return str1.slice(0, str2.length);
+}
+
+function commonSuffix(str1: string, str2: string) {
+  let i = str1.length - 1;
+  let j = str2.length - 1;
+
+  while (i >= 0 && j >= 0 && str1[i] === str2[j]) {
+    i--;
+    j--;
+  }
+
+  return str1.slice(i + 1);
+}
+
+function addTruncatedPrefixSuffix(input: Example, output: LabelledPrediction) {
+  const match = /<fim_suffix>|<\|fim_suffix\|>/.exec(output.templated);
+  if (match == null) {
+    throw Error("Can't find fim_suffix in template");
+  }
+
+  const prefix = output.templated.slice(0, match.index);
+  const suffix = output.templated.slice(match.index + match[0].length);
+
+  return {
+    ...output,
+    truncatedPrefix: commonSuffix(input.prompt, prefix),
+    truncatedSuffix: commonPrefix(input.right_context, suffix),
+  } as PredictionWithTruncated;
+}
 
 export async function fetchSamples(
   model: string,
@@ -58,7 +97,7 @@ export async function fetchSamples(
 
     returnValue.push({
       input,
-      output,
+      output: addTruncatedPrefixSuffix(input, output),
       result,
     });
   }
