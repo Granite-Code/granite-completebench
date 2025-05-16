@@ -117,6 +117,23 @@ class GenerateVllmArgs(GenerateArgs):
         )
 
 
+@dataclass
+class GenerateOllamaArgs(GenerateArgs):
+    ollama_model: list[str]
+
+    @classmethod
+    def add_arguments(cls, parser: argparse.ArgumentParser):
+        super().add_arguments(parser)
+
+        parser.add_argument(
+            "--ollama-model",
+            type=str,
+            action="append",
+            required=True,
+            help="Ollama model (must be one for each --model argument)",
+        )
+
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -125,7 +142,12 @@ def main():
     generate_vllm_parser = subparsers.add_parser(
         "generate-vllm", help="Generate completions using vLLM"
     )
-    GenerateArgs.add_arguments(generate_vllm_parser)
+    GenerateVllmArgs.add_arguments(generate_vllm_parser)
+
+    generate_ollama_parser = subparsers.add_parser(
+        "generate-ollama", help="Generate completions using Ollama"
+    )
+    GenerateOllamaArgs.add_arguments(generate_ollama_parser)
 
     evaluate_parser = subparsers.add_parser("evaluate", help="Evaluate generation results")
     EvaluateArgs.add_arguments(evaluate_parser)
@@ -139,6 +161,16 @@ def main():
             print(f"Error importing generate_vllm: {e}, try: `pip install -e '.[vllm]`")
             return 1
         generate_vllm_command(GenerateVllmArgs(**vars(args)))
+    elif args.command == "generate-ollama":
+        from .generate_ollama import command as generate_ollama_command
+
+        ollama_args = GenerateOllamaArgs(**vars(args))
+        if len(ollama_args.model) != len(ollama_args.ollama_model):
+            parser.error(
+                "Exactly one --ollama-model argument must be provided for each --model argument"
+            )
+
+        generate_ollama_command(ollama_args)
     elif args.command == "evaluate":
         from .evaluate import command as evaluate_command
 

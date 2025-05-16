@@ -105,6 +105,15 @@ def prune_prefix_suffix(
     )
 
 
+def get_fim_pad_token(tokenizer: PreTrainedTokenizer):
+    all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
+
+    if "<|fim_pad|>" in all_added_tokens:
+        return "<|fim_pad|>"
+    else:
+        return None
+
+
 def get_filename_token(tokenizer: PreTrainedTokenizer):
     all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
 
@@ -188,7 +197,7 @@ def create_prompt(
 
         if options.template == "inside":
             prompt = (
-                 fim_prefix
+                fim_prefix
                 + snippet_text
                 + f"{filename}{example['metadata']['file']}\n"
                 + prefix

@@ -10,17 +10,13 @@ from vllm import LLM, SamplingParams
 
 from .cli import GenerateVllmArgs
 from .file_utils import read_jsonl, write_jsonl
-from .granite_prompts import create_prompt, AutocompleteOptions, get_filename_token
+from .granite_prompts import (
+    create_prompt,
+    AutocompleteOptions,
+    get_filename_token,
+    get_fim_pad_token,
+)
 from .types import Example, Prediction
-
-
-def get_fim_pad_token(tokenizer: PreTrainedTokenizer):
-    all_added_tokens = set(v.content for v in tokenizer.added_tokens_decoder.values())
-
-    if "<|fim_pad|>" in all_added_tokens:
-        return "<|fim_pad|>"
-    else:
-        return None
 
 
 def generate(
@@ -100,12 +96,14 @@ def generate_for_model(args: GenerateVllmArgs, model: str):
 
     # generation
     for language in args.language:
-        data_path = Path(args.data_root_dir) / language /  (args.task + ".jsonl")
+        data_path = Path(args.data_root_dir) / language / (args.task + ".jsonl")
         data = [l for l in read_jsonl(data_path)]
 
         for template in args.template:
             print(f"====== model={model} language={language} template={template}")
-            output_file = Path(args.output_dir) / model_short / language / template / "prediction.jsonl"
+            output_file = (
+                Path(args.output_dir) / model_short / language / template / "prediction.jsonl"
+            )
             if os.path.exists(output_file):
                 continue
             options = AutocompleteOptions(template=template)
