@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router";
 import "./App.css";
 import { About } from "./components/About";
+import { Glossary } from "./components/Glossary";
 import { Samples } from "./components/Samples";
 import { Metrics } from "./components/Metrics";
 import { BASE } from "./site";
@@ -20,6 +21,9 @@ function App() {
         <NavLink className="headerLink" to="/samples">
           Samples
         </NavLink>
+        <NavLink className="headerLink" to="/glossary">
+          Glossary
+        </NavLink>
         <a
           className="headerLink"
           href="https://github.com/Granite-Code/granite-completebench"
@@ -32,6 +36,7 @@ function App() {
           <Route path="/" element={<About />} />
           <Route path="/metrics" element={<Metrics />} />
           <Route path="/samples" element={<Samples />} />
+          <Route path="/glossary" element={<Glossary />} />
         </Routes>
       </div>
     </BrowserRouter>

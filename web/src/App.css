@@ -58,7 +58,8 @@ h1 {
   font-size: 24px;
 }
 
-#about {
+#about,
+#glossary {
   margin-left: auto;
   margin-right: auto;
   max-width: 600px;
