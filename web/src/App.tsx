@@ -5,40 +5,46 @@ import { Glossary } from "./components/Glossary";
 import { Samples } from "./components/Samples";
 import { Metrics } from "./components/Metrics";
 import { BASE } from "./site";
+import { MetricsProvider } from "./context/Metrics";
+import { SampleManifestProvider } from "./context/SampleManifest";
 
 function App() {
   return (
     <BrowserRouter basename={BASE}>
-      <div id="header">
-        <img src={BASE + "/granitecode.svg"} id="headerLogo" />
-        <div id="headerTitle">granite-completebench</div>
-        <NavLink className="headerLink" to="/">
-          About
-        </NavLink>
-        <NavLink className="headerLink" to="/metrics">
-          Metrics
-        </NavLink>
-        <NavLink className="headerLink" to="/samples">
-          Samples
-        </NavLink>
-        <NavLink className="headerLink" to="/glossary">
-          Glossary
-        </NavLink>
-        <a
-          className="headerLink"
-          href="https://github.com/Granite-Code/granite-completebench"
-        >
-          GitHub
-        </a>
-      </div>
-      <div id="main">
-        <Routes>
-          <Route path="/" element={<About />} />
-          <Route path="/metrics" element={<Metrics />} />
-          <Route path="/samples" element={<Samples />} />
-          <Route path="/glossary" element={<Glossary />} />
-        </Routes>
-      </div>
+      <MetricsProvider>
+        <SampleManifestProvider>
+          <div id="header">
+            <img src={BASE + "/granitecode.svg"} id="headerLogo" />
+            <div id="headerTitle">granite-completebench</div>
+            <NavLink className="headerLink" to="/">
+              About
+            </NavLink>
+            <NavLink className="headerLink" to="/metrics">
+              Metrics
+            </NavLink>
+            <NavLink className="headerLink" to="/samples">
+              Samples
+            </NavLink>
+            <NavLink className="headerLink" to="/glossary">
+              Glossary
+            </NavLink>
+            <a
+              className="headerLink"
+              href="https://github.com/Granite-Code/granite-completebench"
+            >
+              GitHub
+            </a>
+          </div>
+          <div id="main">
+            <Routes>
+              <Route path="/" element={<About />} />
+              <Route path="/metrics" element={<Metrics />} />
+              <Route path="/samples" element={<Samples />} />
+              <Route path="/glossary" element={<Glossary />} />
+            </Routes>
+          </div>
+        </SampleManifestProvider>
+      </MetricsProvider>
     </BrowserRouter>
   );
 }

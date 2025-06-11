@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { MetricsStore, fetchMetrics } from "../utils/fetchMetrics";
-import { MetricsTable } from "./MetricsTable";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router";
+import { MetricsTable } from "./MetricsTable";
+import { useMetrics } from "../context/Metrics";
 
 function validatedPostProcessor(
   searchParams: URLSearchParams,
-  store: MetricsStore,
+  store: ReturnType<typeof useMetrics>,
 ) {
   if (store.postprocessors.length == 0) {
     return "";
@@ -24,20 +24,7 @@ function validatedPostProcessor(
 
 export function Metrics() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [store, setStore] = useState<MetricsStore>(new MetricsStore());
-
-  useEffect(() => {
-    async function loadMetrics() {
-      try {
-        const newStore = await fetchMetrics();
-        setStore(newStore);
-      } catch (error) {
-        console.log("Error loading metrics", error);
-      }
-    }
-
-    loadMetrics();
-  }, []);
+  const store = useMetrics();
 
   useEffect(() => {
     if (store.postprocessors.length == 0) {
