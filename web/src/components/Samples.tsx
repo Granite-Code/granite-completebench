@@ -81,12 +81,12 @@ export function Samples() {
       replace: true,
     });
     setIsInitialized(true);
-  }, [isLoading, isInitialized, manifest, searchParams]);
+  }, [isLoading, isInitialized, manifest, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (!isInitialized) return;
 
-    let validated = validateSearchParams(searchParams, manifest);
+    const validated = validateSearchParams(searchParams, manifest);
     const model = validated.get("model");
     const language = validated.get("language");
     const template = validated.get("template");
@@ -112,7 +112,7 @@ export function Samples() {
     };
 
     fetchData();
-  }, [isInitialized, searchParams]);
+  }, [isInitialized, searchParams, current, setCurrent, samples, manifest]);
 
   if (!isInitialized || samples.length == 0 || current === undefined) {
     return <div>Loading options...</div>;
