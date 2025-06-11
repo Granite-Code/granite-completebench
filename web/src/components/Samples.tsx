@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import SampleDisplay from "./SampleDisplay";
 import { Dropdown } from "./Dropdown";
 import { fetchSamples } from "../utils/fetchSamples";
-import { BASE } from "../site";
 import type { Sample } from "../types";
 import SampleSelector from "./SampleSelector";
-
-interface Manifest {
-  models: string[];
-  languages: string[];
-  templates: string[];
-  postprocessors: string[];
-}
-
-// Default empty options to use before loading
-const emptyOptions: string[] = [];
+import { useSampleManifest } from "../context/SampleManifest";
 
 function validateSearchParams(
   searchParams: URLSearchParams,
-  manifest: Manifest,
+  manifest: ReturnType<typeof useSampleManifest>,
 ) {
   let newSearchParams: URLSearchParams | undefined;
 
@@ -39,49 +29,19 @@ function validateSearchParams(
 
 export function Samples() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [manifest, setManifest] = useState<Manifest>({
-    models: emptyOptions,
-    languages: emptyOptions,
-    templates: emptyOptions,
-    postprocessors: emptyOptions,
-  });
-  const [isLoading, setIsLoading] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [samples, setSamples] = useState<Sample[]>([]);
   const [current, setCurrent] = useState<number | undefined>();
-
-  // Load manifest.json
-  useEffect(() => {
-    async function loadManifest() {
-      try {
-        const response = await fetch(BASE + "/samples/manifest.json");
-
-        if (!response.ok) {
-          throw new Error(`Failed to load manifest: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        setManifest(data);
-        setIsLoading(false);
-      } catch (err) {
-        console.error("Error loading manifest:", err);
-        setError(err instanceof Error ? err.message : "Failed to load options");
-        setIsLoading(false);
-      }
-    }
-
-    loadManifest();
-  }, []);
+  const manifest = useSampleManifest();
 
   useEffect(() => {
-    if (isLoading || isInitialized) return;
+    if (!manifest || isInitialized) return;
 
     setSearchParams(validateSearchParams(searchParams, manifest), {
       replace: true,
     });
     setIsInitialized(true);
-  }, [isLoading, isInitialized, manifest, searchParams, setSearchParams]);
+  }, [manifest, isInitialized, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (!isInitialized) return;
@@ -115,11 +75,7 @@ export function Samples() {
   }, [isInitialized, searchParams, current, setCurrent, samples, manifest]);
 
   if (!isInitialized || samples.length == 0 || current === undefined) {
-    return <div>Loading options...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Loading samples...</div>;
   }
 
   return (

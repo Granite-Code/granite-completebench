@@ -1,3 +1,4 @@
+import { createContext, useContext, useEffect, useState } from "react";
 import { BASE } from "../site";
 
 export const METRIC_DESCRIPTIONS: { [K in MetricName]: string } = {
@@ -105,8 +106,32 @@ export class MetricsStore {
   }
 }
 
-export async function fetchMetrics() {
-  const store = new MetricsStore();
-  await store.load();
-  return store;
+const MetricsContext = createContext<MetricsStore | undefined>(undefined);
+
+export function MetricsProvider({ children }: { children: React.ReactNode }) {
+  const [metrics, setMetrics] = useState<MetricsStore>();
+
+  useEffect(() => {
+    const loadMetrics = async () => {
+      const store = new MetricsStore();
+      await store.load();
+      setMetrics(store);
+    };
+
+    loadMetrics();
+  }, []);
+
+  return (
+    <MetricsContext.Provider value={metrics}>
+      {children}
+    </MetricsContext.Provider>
+  );
+}
+
+export function useMetrics() {
+  const context = useContext(MetricsContext);
+  if (context === undefined) {
+    throw new Error("useMetrics must be used within a MetricsProvider");
+  }
+  return context;
 }
