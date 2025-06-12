@@ -45,6 +45,7 @@ export function Metrics() {
   }, [store, searchParams, setSearchParams]);
 
   const postprocessor = validatedPostProcessor(searchParams, store);
+  if (store.error) return <div>Error: {store.error}</div>;
   if (store.postprocessors.length == 0 || postprocessor === "")
     return <div>Loading...</div>;
 

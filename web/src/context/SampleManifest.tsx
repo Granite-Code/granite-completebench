@@ -1,28 +1,22 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { BASE } from "../site";
 
-interface Manifest {
+interface SampleManifest {
   models: string[];
   languages: string[];
   templates: string[];
   postprocessors: string[];
+  error?: string;
 }
 
-const emptyManifest: Manifest = {
-  models: [],
-  languages: [],
-  templates: [],
-  postprocessors: [],
-};
-
-const SampleManifestContext = createContext<Manifest | undefined>(undefined);
+const SampleManifestContext = createContext<SampleManifest | undefined>(undefined);
 
 export function SampleManifestProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [manifest, setManifest] = useState<Manifest>(emptyManifest);
+  const [manifest, setManifest] = useState<SampleManifest | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -39,6 +33,7 @@ export function SampleManifestProvider({
       } catch (err) {
         console.error("Error loading manifest:", err);
         setError(err instanceof Error ? err.message : "Failed to load options");
+        setManifest({models: [], languages: [], templates: [], postprocessors: [], error: err instanceof Error ? err.message : "Failed to load options" });
       }
     }
 
@@ -46,7 +41,6 @@ export function SampleManifestProvider({
   }, []);
 
   if (error) {
-    // You might want to handle this differently depending on your needs
     console.error(error);
   }
 
